@@ -1,5 +1,5 @@
 ![Node.js CI](https://github.com/Frenzy265/boilerplate/workflows/Node.js%20CI/badge.svg)
 
-# boilerplate
+# recycle
 
-starter template with react
+webapplication for easy recycling
