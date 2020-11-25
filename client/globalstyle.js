@@ -2,8 +2,8 @@ import { createGlobalStyle } from "styled-components/makro";
 
 const GlobalStyle = createGlobalStyle`
 *,
-  *::after,
-  *::before {
+*::after,
+*::before {
     box-sizing: border-box;
   }
 
@@ -13,27 +13,27 @@ const GlobalStyle = createGlobalStyle`
     --action-color: #F2CB05;
     --noaction-color: #fff;
     --light-font-color: #fff;
-    --dark-font-color: var(----main-color)
+    --dark-font-color: var(--main-color)
 }
 
 body {
     margin: 0;
-    background: var(----main-color);
+    background: var(--main-color);
     font-family: "Roboto", sans-serif;
+    color: var(--light-font-color)
 }
 
 h1 {
-    color: var(----main-color);
+    color: var(--main-color);
     font-size: 35px;
     font-family: "Permanent Marker", sans-serif;
 }
 
 h2 {
-    color: var(----main-color);
+    color: var(--main-color);
     font-size: 20px;
     font-weight: bold;
 }
-
 
 `;
 
