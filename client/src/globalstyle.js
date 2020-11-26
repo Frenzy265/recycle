@@ -13,20 +13,22 @@ const GlobalStyle = createGlobalStyle`
     --action-color: #F2CB05;
     --noaction-color: #fff;
     --light-font-color: #fff;
-    --dark-font-color: var(--main-color)
+    --dark-font-color: var(--main-color);
+    --main-font: "Roboto", sans-serif;
+    --header-font: "Permanent Marker", sans-serif;
 }
 
 body {
     margin: 0;
     background: var(--main-color);
-    font-family: "Roboto", sans-serif;
+    font-family: var(--main-font);
     color: var(--light-font-color)
 }
 
 h1 {
     color: var(--main-color);
     font-size: 35px;
-    font-family: "Permanent Marker", sans-serif;
+    font-family: var(--header-font)
 }
 
 h2 {
