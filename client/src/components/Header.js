@@ -3,6 +3,7 @@ import styled from "styled-components/macro";
 const Header = styled.header`
   display: grid;
   font-family: var(--header-font);
+  color: var(--noaction-color);
   place-items: center;
   min-height: 100px;
   font-size: 35px;

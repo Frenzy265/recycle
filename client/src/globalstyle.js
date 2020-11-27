@@ -12,9 +12,8 @@ const GlobalStyle = createGlobalStyle`
     --secondary-color: #778C80;
     --action-color: #F2CB05;
     --noaction-color: #fff;
-    --light-font-color: #fff;
-    --dark-font-color: var(--main-color);
     --main-font: "Roboto", sans-serif;
+    --text-color: #5A5A5A,
     --header-font: "Permanent Marker", sans-serif;
     --default-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.16)
 }
@@ -23,7 +22,7 @@ body {
     margin: 0;
     background: var(--main-color);
     font-family: var(--main-font);
-    color: var(--light-font-color);
+    color: var(--noactioncolor);
 }
 
 h1 {
