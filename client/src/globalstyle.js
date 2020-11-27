@@ -16,13 +16,14 @@ const GlobalStyle = createGlobalStyle`
     --dark-font-color: var(--main-color);
     --main-font: "Roboto", sans-serif;
     --header-font: "Permanent Marker", sans-serif;
+    --default-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.16)
 }
 
 body {
     margin: 0;
     background: var(--main-color);
     font-family: var(--main-font);
-    color: var(--light-font-color)
+    color: var(--light-font-color);
 }
 
 h1 {

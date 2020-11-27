@@ -9,7 +9,7 @@ const Form = styled.form`
   max-width: 80vw;
   border-radius: 7px;
   border: none;
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.16);
+  box-shadow: var(--default-box-shadow);
   display: flex;
   align-items: center;
   justify-content: space-between;

@@ -10,7 +10,7 @@ const Button = styled.button`
   max-width: 80vw;
   border-radius: 7px;
   border: none;
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.16);
+  box-shadow: var(--default-box-shadow);
   text-align: left;
   display: flex;
   align-items: center;
