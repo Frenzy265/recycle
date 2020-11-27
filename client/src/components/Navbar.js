@@ -8,6 +8,8 @@ const Footer = styled.footer`
   width: 80vw;
   display: flex;
   justify-content: space-evenly;
+  position: fixed;
+  bottom: 0;
 
   img {
     height: 20px;
