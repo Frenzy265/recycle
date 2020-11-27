@@ -1,14 +1,14 @@
 import React from "react";
-import Button from "./Button";
+import Input from "./Button";
 import IconRecycle from "../assets/icon-recycle.svg";
 
 export default {
-  title: "Components/Button",
+  title: "Components/Input",
   parameters: { layout: "centered" },
-  component: Button,
+  component: Input,
 };
 
-const Template = (args) => <Button {...args} />;
+const Template = (args) => <Input {...args} />;
 
 export const Status = Template.bind({});
 Status.args = {
