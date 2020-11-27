@@ -23,13 +23,13 @@ const Footer = styled.footer`
 export const Navbar = () => {
   return (
     <Footer>
-      <a href="www.web.de">
+      <a href="/">
         <img src={IconSearch} alt="Icon Search" />
       </a>
-      <a href="www.web.de">
+      <a href="/">
         <img src={IconBox} alt="Icon Box" />
       </a>
-      <a href="www.web.de">
+      <a href="/">
         <img src={IconLightBulb} alt="Icon Lightbulb" />
       </a>
     </Footer>
