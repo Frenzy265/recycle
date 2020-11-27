@@ -1,22 +1,26 @@
 import React from "react";
-import Input from "./Button";
-import IconRecycle from "../assets/icon-recycle.svg";
+import { Inputfield } from "./Input";
+import IconAdd from "../assets/icon-add.svg";
+import IconSearch from "../assets/icon-search.svg";
 
 export default {
-  title: "Components/Input",
+  title: "Components/Inputfield",
   parameters: { layout: "centered" },
-  component: Input,
+  component: Inputfield,
 };
 
-const Template = (args) => <Input {...args} />;
+const Template = (args) => <Inputfield {...args} />;
 
-export const Status = Template.bind({});
-Status.args = {
-  active: true,
-  children: [
-    <>
-      <p>Erfolgreich recycled</p>
-      <img src={IconRecycle} alt="Icon recycle" />
-    </>,
-  ],
+export const NewItem = Template.bind({});
+NewItem.args = {
+  title: "Neuer Eintrag",
+  icon: IconAdd,
+  alt: "Icon Add",
+};
+
+export const Search = Template.bind({});
+Search.args = {
+  title: "Was möchtest du recyceln?",
+  icon: IconSearch,
+  alt: "Icon Search",
 };
