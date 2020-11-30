@@ -2,7 +2,7 @@ import styled from "styled-components/macro";
 import PropTypes from "prop-types";
 
 const Box = styled.div`
-  background-color: var(--noaction-color);
+  background-color: var(--tertiary-color);
   border-radius: 7px;
   border: none;
   box-shadow: var(--default-box-shadow);
@@ -12,7 +12,7 @@ const Box = styled.div`
   padding: 5px 20px;
 
   p {
-    color: var(--text-color);
+    color: var(--primary-color);
   }
 
   h2 {

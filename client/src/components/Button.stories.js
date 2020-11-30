@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "./Button";
-import IconRecycle from "../assets/icon-recycle.svg";
+import IconRecycle from "../assets/icon-recycle-primary.svg";
 
 export default {
   title: "Components/Button",

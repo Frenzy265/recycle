@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 
 const Box = styled.button`
   background-color: ${(props) =>
-    props.existing ? "var(--action-color)" : "var(--noaction-color)"};
-  color: var(--secondary-color);
+    props.existing ? "var(--secondary-color)" : "var(--action-color)"};
+  color: var(--primary-color);
   height: 130px;
   width: 130px;
   border-radius: 7px;

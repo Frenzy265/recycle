@@ -1,5 +1,5 @@
-import IconForward from "../assets/icon-arrow-forward.svg";
-import IconRecycle from "../assets/icon-recycle.svg";
+import IconForward from "../assets/icon-arrow-forward-primary.svg";
+import IconRecycle from "../assets/icon-recycle-primary.svg";
 import React from "react";
 import { ListItems } from "./ListItem";
 

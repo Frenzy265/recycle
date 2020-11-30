@@ -1,6 +1,6 @@
 import { TextBox } from "../components/TextBox";
 import React from "react";
-import IconRecycle from "../assets/icon-recycle.svg";
+import IconRecycle from "../assets/icon-recycle-primary.svg";
 import IconLightbulbAction from "../assets/icon-lightbulb-action.svg";
 
 export default {

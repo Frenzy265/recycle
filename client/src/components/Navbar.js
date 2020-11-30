@@ -1,7 +1,7 @@
 import styled from "styled-components/macro";
-import IconSearch from "../assets/icon-search-noaction.svg";
-import IconLightBulb from "../assets/icon-lightbulb-noaction.svg";
-import IconBox from "../assets/icon-box-noaction.svg";
+import IconSearch from "../assets/icon-search-tertiary.svg";
+import IconLightBulb from "../assets/icon-lightbulb-tertiary.svg";
+import IconBox from "../assets/icon-box-tertiary.svg";
 
 const Footer = styled.footer`
   min-height: 80px;

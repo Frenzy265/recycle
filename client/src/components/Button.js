@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 
 const Button = styled.button`
   background-color: ${(props) =>
-    props.active ? "var(--action-color)" : "var(--secondary-color)"};
-  color: var(--main-color);
+    props.active ? "var(--action-color)" : "var(--tertiary-color)"};
+  color: var(--primary-color);
   height: 50px;
   min-width: 300px;
   max-width: 80vw;

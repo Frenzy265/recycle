@@ -2,8 +2,8 @@ import styled from "styled-components/macro";
 import PropTypes from "prop-types";
 
 const ListItem = styled.li`
-  background-color: var(--noaction-color);
-  color: var(--main-color);
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
   height: 50px;
   min-width: 300px;
   max-width: 80vw;

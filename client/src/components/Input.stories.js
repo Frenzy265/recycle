@@ -1,7 +1,7 @@
 import React from "react";
 import { Inputfield } from "./Input";
-import IconAdd from "../assets/icon-add.svg";
-import IconSearch from "../assets/icon-search.svg";
+import IconAdd from "../assets/icon-add-primary.svg";
+import IconSearch from "../assets/icon-search-primary.svg";
 
 export default {
   title: "Components/Inputfield",

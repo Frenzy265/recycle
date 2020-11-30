@@ -1,7 +1,7 @@
 import React from "react";
 import Box from "./Box";
-import IconBox from "../assets/icon-box.svg";
-import IconBoxNew from "../assets/icon-box-new.svg";
+import IconBox from "../assets/icon-box-primary.svg";
+import IconBoxNew from "../assets/icon-box-new-primary.svg";
 
 export default {
   title: "Components/Box",

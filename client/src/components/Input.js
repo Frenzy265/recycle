@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const Form = styled.form`
   background-color: var(--action-color);
-  color: var(--main-color);
+  color: var(--primary-color);
   height: 50px;
   min-width: 300px;
   max-width: 80vw;
@@ -18,11 +18,11 @@ const Form = styled.form`
 
 const Input = styled.input`
   background-color: var(--action-color);
-  color: var(--main-color);
+  color: var(--primary-color);
   border: none;
 
   ::placeholder {
-    color: var(--secondary-color);
+    color: var(--tertiary-color);
   }
 `;
 
