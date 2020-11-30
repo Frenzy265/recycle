@@ -3,7 +3,7 @@ import IconBoxOld from "../assets/icon-box-primary.svg";
 import IconBoxNew from "../assets/icon-box-new-primary.svg";
 import styled from "styled-components/macro";
 
-const BoxContainer = styled.div`
+const Container = styled.div`
   display: grid;
   grid-gap: 1rem;
   place-items: center;
@@ -12,7 +12,7 @@ const BoxContainer = styled.div`
 
 export default function BoxStart() {
   return (
-    <BoxContainer>
+    <Container>
       <Box>
         <img src={IconBoxNew} alt="Icon Box" />
         <p>Neue Kiste</p>
@@ -29,6 +29,6 @@ export default function BoxStart() {
         <img src={IconBoxOld} alt="Icon Box" />
         <p>Kleidercontainer</p>
       </Box>
-    </BoxContainer>
+    </Container>
   );
 }
