@@ -1,36 +1,22 @@
 import React from "react";
-
 import Button from "./Button";
+import IconRecycle from "../assets/icon-recycle-primary.svg";
 
 export default {
-  title: "Example/Button",
+  title: "Components/Button",
+  parameters: { layout: "centered" },
   component: Button,
-  argTypes: {
-    backgroundColor: { control: "color" },
-  },
 };
 
 const Template = (args) => <Button {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {
-  primary: true,
-  label: "Button",
-};
-
-export const Secondary = Template.bind({});
-Secondary.args = {
-  label: "Button",
-};
-
-export const Large = Template.bind({});
-Large.args = {
-  size: "large",
-  label: "Button",
-};
-
-export const Small = Template.bind({});
-Small.args = {
-  size: "small",
-  label: "Button",
+export const Status = Template.bind({});
+Status.args = {
+  active: true,
+  children: [
+    <>
+      <p>Erfolgreich recycled</p>
+      <img src={IconRecycle} alt="Icon recycle" />
+    </>,
+  ],
 };
