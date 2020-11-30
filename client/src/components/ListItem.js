@@ -21,7 +21,7 @@ const ListItem = styled.li`
   }
 `;
 
-export const ListItems = ({ item, icon, alt }) => {
+export const List = ({ item, icon, alt }) => {
   return (
     <ListItem>
       {item}
@@ -30,7 +30,7 @@ export const ListItems = ({ item, icon, alt }) => {
   );
 };
 
-ListItems.propTypes = {
+List.propTypes = {
   item: PropTypes.string.isRequired,
   icon: PropTypes.any,
   alt: PropTypes.string.isRequired,
