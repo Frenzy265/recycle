@@ -22,7 +22,8 @@ const Input = styled.input`
   border: none;
 
   ::placeholder {
-    color: var(--tertiary-color);
+    color: var(--primary-color);
+    font-size: 16px;
   }
 `;
 
@@ -31,6 +32,7 @@ const ButtonIcon = styled.button`
   height: 20px;
   width: 20px;
   border: none;
+  padding: 0px;
 
   img {
     height: 20px;
