@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components/macro";
-import myFont from "./assets/HeyOctober.otf";
+import myFont from "./assets/edosz.ttf";
 
 const GlobalStyle = createGlobalStyle`
 *,
@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
 @font-face {
-    font-family: HeyOctober;
+    font-family: "Edosz";
     src: url(${myFont});
 }
 
@@ -19,8 +19,8 @@ const GlobalStyle = createGlobalStyle`
     --tertiary-color: #92B9B8;
     --action-color: #F2CB05;
     --main-font: "Roboto", sans-serif;
-    --text-color: #FFFFFF,
-    --header-font: "HeyOctober", sans-serif;
+    --text-color: #FFFFFF;
+    --header-font: "Edosz", sans-serif;
     --default-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.16)
 }
 
@@ -33,7 +33,8 @@ body {
 h1 {
     color: var(--action-color);
     font-size: 35px;
-    font-family: var(--header-font)
+    font-family: var(--header-font);
+    transform: uppercase;
 }
 
 h2 {
