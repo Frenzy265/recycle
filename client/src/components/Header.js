@@ -10,6 +10,7 @@ const Header = styled.header`
   word-wrap: break-word;
   line-height: 30px;
   text-align: center;
+  margin-bottom: 20px;
 `;
 
 export default Header;
