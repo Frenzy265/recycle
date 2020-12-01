@@ -5,7 +5,7 @@ import styled from "styled-components/macro";
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
   padding: 1rem;
   grid-gap: 1rem;
   place-items: center;
