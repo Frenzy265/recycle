@@ -4,12 +4,15 @@ import IconLightBulb from "../assets/icon-lightbulb-tertiary.svg";
 import IconBox from "../assets/icon-box-tertiary.svg";
 
 const Footer = styled.footer`
-  min-height: 80px;
-  width: 80vw;
+  min-height: 60px;
+  width: 100%;
   display: flex;
   justify-content: space-evenly;
   position: fixed;
   bottom: 0;
+  left: 0;
+  align-items: center;
+  background-color: var(--primary-color);
 
   img {
     height: 20px;

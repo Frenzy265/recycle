@@ -10,6 +10,8 @@ const Header = styled.header`
   word-wrap: break-word;
   line-height: 30px;
   text-align: center;
+  width: 100vw;
+  background-color: var(--primary-color);
 `;
 
 export default Header;

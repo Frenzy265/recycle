@@ -1,19 +1,13 @@
 import styled from "styled-components/macro";
 import PropTypes from "prop-types";
+import { BasicStyle, BasicSize } from "../globalstyle";
 
 const Form = styled.form`
+  ${BasicStyle};
+  ${BasicSize};
   background-color: var(--action-color);
   color: var(--primary-color);
-  height: 50px;
-  min-width: 300px;
-  max-width: 80vw;
-  border-radius: 7px;
-  border: none;
-  box-shadow: var(--default-box-shadow);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px 0;
+  justify-content: space-around;
 `;
 
 const Input = styled.input`
@@ -22,7 +16,7 @@ const Input = styled.input`
   border: none;
 
   ::placeholder {
-    color: var(--tertiary-color);
+    color: var(--primary-color);
   }
 `;
 
@@ -41,7 +35,7 @@ const ButtonIcon = styled.button`
 export const Inputfield = ({ title, icon, alt }) => {
   return (
     <Form>
-      <Input placeholder={title} size="30" />
+      <Input placeholder={title} size="29" />
       <ButtonIcon type="submit">
         <img src={icon} alt={alt} />
       </ButtonIcon>

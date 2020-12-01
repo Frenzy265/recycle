@@ -1,15 +1,15 @@
 import IconForward from "../assets/icon-arrow-forward-primary.svg";
 import IconRecycle from "../assets/icon-recycle-primary.svg";
 import React from "react";
-import { ListItems } from "./ListItem";
+import { List } from "./ListItem";
 
 export default {
   title: "Components/ListItems",
   parameters: { layout: "centered" },
-  component: ListItems,
+  component: List,
 };
 
-const Template = (args) => <ListItems {...args} />;
+const Template = (args) => <List {...args} />;
 
 export const SearchItem = Template.bind({});
 SearchItem.args = {
