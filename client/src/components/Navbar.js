@@ -2,6 +2,7 @@ import styled from "styled-components/macro";
 import IconSearch from "../assets/icon-search-tertiary.svg";
 import IconLightBulb from "../assets/icon-lightbulb-tertiary.svg";
 import IconBox from "../assets/icon-box-tertiary.svg";
+import { Link } from "react-router-dom";
 
 const Footer = styled.footer`
   min-height: 60px;
@@ -28,15 +29,15 @@ const Footer = styled.footer`
 export const Navbar = () => {
   return (
     <Footer>
-      <a href="/">
+      <Link to="/searchstart">
         <img src={IconSearch} alt="Icon Search" />
-      </a>
-      <a href="/">
+      </Link>
+      <Link to="/boxstart">
         <img src={IconBox} alt="Icon Box" />
-      </a>
-      <a href="/">
+      </Link>
+      <Link to="/goodtoknow">
         <img src={IconLightBulb} alt="Icon Lightbulb" />
-      </a>
+      </Link>
     </Footer>
   );
 };
