@@ -1,19 +1,16 @@
 import styled from "styled-components/macro";
 import PropTypes from "prop-types";
+import { BasicStyle } from "../globalstyle";
 
 const Box = styled.button`
+  ${BasicStyle};
   background-color: ${(props) =>
     props.existing ? "var(--secondary-color)" : "var(--action-color)"};
   color: var(--primary-color);
   height: 130px;
   width: 130px;
-  border-radius: 7px;
-  border: none;
-  box-shadow: var(--default-box-shadow);
-  display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 
   img {
     height: 44px;
