@@ -7,8 +7,8 @@ const Box = styled.button`
   background-color: ${(props) =>
     props.existing ? "var(--secondary-color)" : "var(--action-color)"};
   color: var(--primary-color);
-  height: 130px;
-  width: 130px;
+  height: 110px;
+  width: 110px;
   flex-direction: column;
   justify-content: center;
 
@@ -21,6 +21,7 @@ const Box = styled.button`
   p {
     margin-bottom: 10px;
     margin-top: 5px;
+    font-size: 14px;
   }
 `;
 
