@@ -29,10 +29,10 @@ const Footer = styled.footer`
 export const Navbar = () => {
   return (
     <Footer>
-      <Link to="/searchstart">
+      <Link to="/search">
         <img src={IconSearch} alt="Icon Search" />
       </Link>
-      <Link to="/boxstart">
+      <Link to="/box">
         <img src={IconBox} alt="Icon Box" />
       </Link>
       <Link to="/goodtoknow">

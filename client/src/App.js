@@ -26,19 +26,19 @@ function App() {
             <Route path="/goodtoknow">
               <GoodToKnow />
             </Route>
-            <Route path="/boxexist">
+            <Route path="/box/content">
               <BoxExist />
             </Route>
-            <Route path="/boxnew">
+            <Route path="/box/new">
               <BoxNew />
             </Route>
-            <Route path="/boxstart">
+            <Route path="/box">
               <BoxStart />
             </Route>
-            <Route path="/searchstart">
+            <Route path="/search">
               <SearchStart />
             </Route>
-            <Route path="/Searchresult">
+            <Route path="/search/result">
               <SearchResult />
             </Route>
           </Switch>
