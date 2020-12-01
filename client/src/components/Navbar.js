@@ -12,6 +12,7 @@ const Footer = styled.footer`
   bottom: 0;
   left: 0;
   align-items: center;
+  background-color: var(--primary-color);
 
   img {
     height: 20px;
