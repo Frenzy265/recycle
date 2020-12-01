@@ -4,8 +4,8 @@ import { Navbar } from "./components/Navbar";
 // import GoodToKnow from "./pages/GoodToKnow";
 import PageContainer from "./components/PageContainer";
 // import BoxExist from "./pages/BoxExist";
-import BoxNew from "./pages/BoxNew";
-import BoxStart from "./pages/BoxStart";
+// import BoxNew from "./pages/BoxNew";
+// import BoxStart from "./pages/BoxStart";
 // import SearchResult from "./pages/SearchResult";
 // import SearchStart from "./pages/SearchStart";
 
