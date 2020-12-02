@@ -11,34 +11,20 @@ import BoxStart from "./pages/BoxStart";
 import SearchResult from "./pages/SearchResult";
 import SearchStart from "./pages/SearchStart";
 import Home from "./pages/Home";
-import { I18nContext } from "./context/i18n";
 import { useState } from "react";
-
-const localeDicts = {
-  de: {
-    content: "Hier steht die deutsche Übersetzung",
-  },
-  en: {
-    content:
-      "The 3 Rs Reduce, Reuse, Recycle – these three R words are an important part of sustainable living, as they help to cut down on the amount of waste we have to throw away. Its Really simple! Reduce the amount of waste you produce. Reuse items as much as you can before replacing them. Recycle items wherever possible. Using the 3 Rs also helps to minimise the amount of space needed for landfill sites, where waste materials are disposed of.",
-  },
-};
+import LocaleSelect from "./components/LocalSelect";
+import { I18nContext, localeDicts } from "./context/i18n";
 
 function App() {
   const [dict, setDict] = useState(localeDicts.de);
 
   return (
-    <I18nContext.Provider value={dict}>
+    <I18nContext.Provider value={{ dict, setDict }}>
       <Router>
         <GlobalStyle />
         <PageContainer>
           <Headline />
-          <select
-            onChange={(event) => setDict(localeDicts[event.target.value])}
-          >
-            <option value="de">DE</option>
-            <option value="en">EN</option>
-          </select>
+          <LocaleSelect />
           <Switch>
             <Route exact path="/">
               <Home />
