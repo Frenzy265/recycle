@@ -5,7 +5,7 @@ const Starter = styled.img`
   width: 100%;
 `;
 
-export default function SplashPage() {
+export default function SplashScreen() {
   return (
     <>
       <Starter src={Banane} alt="Start with Banane" />
