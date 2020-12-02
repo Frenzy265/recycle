@@ -11,6 +11,7 @@ const Box = styled.button`
   width: 110px;
   flex-direction: column;
   justify-content: center;
+  margin: 1rem;
 
   img {
     height: 44px;
