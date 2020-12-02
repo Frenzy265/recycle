@@ -24,10 +24,17 @@ const GlobalStyle = createGlobalStyle`
     --default-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.16)
 }
 
+html {
+    width: 100%;
+    height: 100%;
+}
+
 body {
     margin: 0;
     background: var(--primary-color);
     font-family: var(--main-font);
+    width: 100%;
+
 }
 
 input, button, li {
@@ -62,7 +69,7 @@ export const BasicStyle = css`
 
 export const BasicSize = css`
   min-width: 300px;
-  max-width: 80vw;
+  max-width: 80%;
   height: 50px;
 `;
 

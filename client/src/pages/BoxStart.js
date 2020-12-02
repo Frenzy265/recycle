@@ -4,11 +4,9 @@ import IconBoxNew from "../assets/icon-box-new-primary.svg";
 import styled from "styled-components/macro";
 
 const Container = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-  padding: 1rem;
-  grid-gap: 1rem;
-  place-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 `;
 
 export default function BoxStart() {

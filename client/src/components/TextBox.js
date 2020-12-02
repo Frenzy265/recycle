@@ -8,7 +8,7 @@ const Box = styled.div`
   box-shadow: var(--default-box-shadow);
   min-height: 145px;
   min-width: 300px;
-  max-width: 80vw;
+  max-width: 80%;
   padding: 5px 20px;
 
   p {
