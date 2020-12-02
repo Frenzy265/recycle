@@ -33,6 +33,9 @@ export default function Header() {
     if (location.pathname === "/box") {
       return "Recyclingkisten";
     }
+    if (location.pathname === "/box/new") {
+      return "Eine neue Kiste";
+    }
   }
 
   return (
