@@ -32,6 +32,16 @@ export const Navbar = () => {
 
   return (
     <Footer>
+      <Navlink to="/" active={location.pathname === "/"}>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 25.5">
+          <path
+            id="Icon_material-home"
+            data-name="Icon material-home"
+            d="M15,30V21h6v9h7.5V18H33L18,4.5,3,18H7.5V30Z"
+            transform="translate(-3 -4.5)"
+          />
+        </svg>
+      </Navlink>
       <Navlink to="/search" active={location.pathname === "/search"}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30.005">
           <path
