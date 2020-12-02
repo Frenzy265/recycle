@@ -1,9 +1,8 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import GlobalStyle from "./globalstyle";
-import Header from "./components/Header";
+import Headline from "./components/Header";
 import { Navbar } from "./components/Navbar";
 import PageContainer from "./components/PageContainer";
-import SplashPage from "./pages/Startpage";
 
 import GoodToKnow from "./pages/GoodToKnow";
 import BoxExist from "./pages/BoxExist";
@@ -11,18 +10,19 @@ import BoxNew from "./pages/BoxNew";
 import BoxStart from "./pages/BoxStart";
 import SearchResult from "./pages/SearchResult";
 import SearchStart from "./pages/SearchStart";
+import Home from "./pages/Home";
 
 function App() {
   return (
     <>
       <Router>
         <GlobalStyle />
-        <Route exact path="/">
-          <SplashPage />
-        </Route>
         <PageContainer>
-          <Header>Recycling</Header>
+          <Headline />
           <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
             <Route path="/goodtoknow">
               <GoodToKnow />
             </Route>
