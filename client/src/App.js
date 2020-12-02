@@ -11,15 +11,12 @@ import BoxStart from "./pages/BoxStart";
 import SearchResult from "./pages/SearchResult";
 import SearchStart from "./pages/SearchStart";
 import Home from "./pages/Home";
-import { useState } from "react";
 import LocaleSelect from "./components/LocalSelect";
-import { I18nContext, localeDicts } from "./context/i18n";
+import { I18nProvider } from "./context/i18n";
 
 function App() {
-  const [dict, setDict] = useState(localeDicts.de);
-
   return (
-    <I18nContext.Provider value={{ dict, setDict }}>
+    <I18nProvider>
       <Router>
         <GlobalStyle />
         <PageContainer>
@@ -51,7 +48,7 @@ function App() {
           <Navbar />
         </PageContainer>
       </Router>
-    </I18nContext.Provider>
+    </I18nProvider>
   );
 }
 
