@@ -24,6 +24,10 @@ const GlobalStyle = createGlobalStyle`
     --default-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.16)
 }
 
+#root {
+    height: 100%
+}
+
 html {
     width: 100%;
     height: 100%;
@@ -41,6 +45,10 @@ input, button, li {
     font-family: var(---main-font);
     font-size: 16px;
     padding: 0px
+}
+
+a {
+    text-decoration: none;
 }
 
 h1 {
