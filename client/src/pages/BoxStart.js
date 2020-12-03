@@ -29,10 +29,12 @@ export default function BoxStart() {
         </Box>
       </Link>
       {boxes?.map((box) => (
-        <Box key={box.id} existing>
-          <img src={IconBoxOld} alt="Icon Box" />
-          <p>{box.title}</p>
-        </Box>
+        <Link key={box.id} to={`/box/${box.title}`}>
+          <Box key={box.id} existing>
+            <img src={IconBoxOld} alt="Icon Box" />
+            <p>{box.title}</p>
+          </Box>
+        </Link>
       ))}
     </Container>
   );
