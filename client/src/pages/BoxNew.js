@@ -1,43 +1,40 @@
 import { InputField } from "../components/Input";
 import Button from "../components/Button";
-import IconAdd from "../assets/icon-add-primary.svg";
-import IconPen from "../assets/icon-pen-primary.svg";
 import { useState } from "react";
 import IconBox from "../assets/icon-box-primary.svg";
+import { postBoxById } from "../utils/api-boxes";
+import { useHistory } from "react-router-dom";
 
-export default function BoxNew() {
-  const [boxName, setBoxName] = useState(null);
-  const [item, setItem] = useState(null);
+export default function AddNewBox() {
+  const [title, setTitle] = useState("");
+  const [item, setItem] = useState("");
+  const history = useHistory();
 
-  function handleChangeBoxName(event) {
-    setBoxName(event.target.value);
-  }
-
-  function handleChangeItem(event) {
-    setItem(event.target.value);
-  }
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    await postBoxById({
+      title: title,
+      items: [item],
+    });
+    history.push("/box");
+  };
 
   return (
-    <>
+    <form onSubmit={handleSubmit}>
       <InputField
-        onSubmit
         title="Geben Sie der Box einen Namen"
-        icon={IconPen}
-        alt="Icon Add"
-        value={boxName}
-        onChange={handleChangeBoxName}
+        value={title}
+        onChange={(event) => setTitle(event.target.value)}
       />
       <InputField
         title="Neuer Eintrag"
-        icon={IconAdd}
-        alt="Icon Add"
         value={item}
-        onChange={handleChangeItem}
+        onChange={(event) => setItem(event.target.value)}
       />
-      <Button type="submit">
+      <Button type="submit" value="AddNewBox">
         <p>Erstelle eine neue Kiste</p>
         <img src={IconBox} alt="Icon Box" />
       </Button>
-    </>
+    </form>
   );
 }
