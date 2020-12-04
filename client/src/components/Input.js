@@ -13,17 +13,22 @@ const Input = styled.input`
   ::placeholder {
     color: var(--primary-color);
   }
-
-  img {
-    height: 20px;
-    width: 20px;
-  }
 `;
 
-export const InputField = ({ title }) => {
-  return <Input type="text" placeholder={title} size="29" />;
+export const InputField = ({ title, value, onChange }) => {
+  return (
+    <Input
+      value={value}
+      onChange={onChange}
+      type="text"
+      placeholder={title}
+      size="29"
+    />
+  );
 };
 
 InputField.propTypes = {
   title: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
