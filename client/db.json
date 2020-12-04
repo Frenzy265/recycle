@@ -1,11 +1,6 @@
 {
   "boxes": [
     {
-      "id": 1,
-      "title": "Wertstoffhof",
-      "items": ["Omas Sessel", "Farbeimer"]
-    },
-    {
       "id": 2,
       "title": "Kleidercontainer",
       "items": ["grüne Stiefel", "Pullover Santa", "Kopfkissen"]
@@ -14,6 +9,11 @@
       "id": 3,
       "title": "ebay",
       "items": ["Fahrradschloss", "Kaffeemaschine", "Rucksack"]
+    },
+    {
+      "title": "Flohmarkt",
+      "items": ["Box", "Tisch"],
+      "id": 4
     }
   ]
 }
