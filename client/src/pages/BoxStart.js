@@ -21,7 +21,7 @@ export default function BoxStart() {
       setBoxes(newBoxes);
     }
     fetchData();
-  }, [boxes]);
+  }, []);
 
   return (
     <Container>
