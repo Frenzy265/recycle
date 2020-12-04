@@ -26,6 +26,4 @@ export const InputField = ({ title }) => {
 
 InputField.propTypes = {
   title: PropTypes.string.isRequired,
-  icon: PropTypes.any,
-  alt: PropTypes.string.isRequired,
 };
