@@ -30,7 +30,7 @@ export default function BoxExist() {
   }, [title]);
 
   const handleDelete = async () => {
-    await deleteBoxByTitle(title);
+    await deleteBoxByTitle(box.id);
     history.push("/box");
   };
 
