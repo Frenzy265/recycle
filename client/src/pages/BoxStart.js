@@ -13,12 +13,15 @@ const Container = styled.div`
 `;
 
 export default function BoxStart() {
-  const [boxes, setBoxes] = useState(null);
+  const [boxes, setBoxes] = useState([]);
 
-  useEffect(async () => {
-    const existBoxes = await getBoxes();
-    setBoxes(existBoxes);
-  }, []);
+  useEffect(() => {
+    async function fetchData() {
+      const newBoxes = await getBoxes();
+      setBoxes(newBoxes);
+    }
+    fetchData();
+  }, [boxes]);
 
   return (
     <Container>
