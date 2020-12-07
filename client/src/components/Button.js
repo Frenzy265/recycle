@@ -12,7 +12,7 @@ const Button = styled.button`
   justify-content: space-between;
 
   img {
-    height: 20px;
+    width: 20px;
   }
 `;
 
