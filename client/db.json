@@ -3,17 +3,22 @@
     {
       "id": 2,
       "title": "Kleidercontainer",
-      "items": ["grüne Stiefel", "Pullover Santa", "Kopfkissen"]
+      "items": ["klamotte"]
     },
     {
-      "id": 3,
-      "title": "ebay",
-      "items": ["Fahrradschloss", "Kaffeemaschine", "Rucksack"]
+      "titel": "ebay",
+      "items": ["klamotte"],
+      "id": 3
     },
     {
       "title": "Flohmarkt",
       "items": ["Box", "Tisch"],
       "id": 4
+    },
+    {
+      "title": "nebenan.de",
+      "items": ["cakepop maker"],
+      "id": 5
     }
   ]
 }

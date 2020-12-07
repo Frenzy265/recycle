@@ -26,3 +26,13 @@ export async function deleteBoxById(id) {
     method: "DELETE",
   });
 }
+
+export async function postItemById(id) {
+  const response = await fetch(`http://localhost:5000/boxes/${id}`, {
+    method: "POST",
+    body: JSON.stringify(id),
+    headers: { "Content-Type": "application/json" },
+  });
+  const newItem = await response.json();
+  return newItem;
+}

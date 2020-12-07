@@ -4,7 +4,7 @@ import { FormInput } from "../components/Form";
 import IconAdd from "../assets/icon-add-primary.svg";
 import Button from "../components/Button";
 import { useEffect, useState } from "react";
-import { deleteBoxById, getBoxByTitle } from "../utils/api-boxes";
+import { deleteBoxById, getBoxByTitle, postItemById } from "../utils/api-boxes";
 import { useHistory, useParams } from "react-router-dom";
 import styled from "styled-components/macro";
 import Header from "../components/Header";
@@ -35,10 +35,24 @@ export default function BoxExist() {
     history.push("/box");
   };
 
+  const [item, setItem] = useState();
+
+  const handleSubmitItem = async (event) => {
+    event.preventDefault();
+    await postItemById([item]);
+  };
+
   return (
     <>
       <Header>{box.title}</Header>
-      <FormInput title="Neuer Eintrag" icon={IconAdd} alt="Icon add" />
+      <FormInput
+        onSubmit={handleSubmitItem}
+        title="Neuer Eintrag"
+        icon={IconAdd}
+        alt="Icon add"
+        value={item}
+        onChange={(event) => setItem(event.target.value)}
+      />
       <ListContainer>
         {box.items?.map((item) => (
           <List
