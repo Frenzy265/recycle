@@ -10,8 +10,16 @@ import SearchResult from "./pages/SearchResult";
 import SearchStart from "./pages/SearchStart";
 import Home from "./pages/Home";
 import BoxNew from "./pages/BoxNew";
+import SplashScreen from "./pages/SplashScreen";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [page, setPage] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => setPage(false), 4000);
+  }, []);
+
   return (
     <>
       <Router>
@@ -19,7 +27,7 @@ function App() {
         <PageContainer>
           <Switch>
             <Route exact path="/">
-              <Home />
+              {page ? <SplashScreen /> : <Home />}
             </Route>
             <Route path="/goodtoknow">
               <GoodToKnow />
@@ -41,7 +49,7 @@ function App() {
             </Route>
           </Switch>
 
-          <Navbar />
+          {!page && <Navbar />}
         </PageContainer>
       </Router>
     </>
