@@ -5,6 +5,7 @@ import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
 import { getBoxes } from "../utils/api-boxes";
 import { useEffect, useState } from "react";
+import Header from "../components/Header";
 
 const Container = styled.div`
   display: flex;
@@ -24,21 +25,24 @@ export default function BoxStart() {
   }, []);
 
   return (
-    <Container>
-      <Link to="/box/new">
-        <Box>
-          <img src={IconBoxNew} alt="Icon Box" />
-          <p>Neue Kiste</p>
-        </Box>
-      </Link>
-      {boxes?.map((box) => (
-        <Link key={box.id} to={`/box/${box.title}`}>
-          <Box key={box.id} existing>
-            <img src={IconBoxOld} alt="Icon Box" />
-            <p>{box.title}</p>
+    <>
+      <Header>Recyclingkisten</Header>
+      <Container>
+        <Link to="/box/new">
+          <Box>
+            <img src={IconBoxNew} alt="Icon Box" />
+            <p>Neue Kiste</p>
           </Box>
         </Link>
-      ))}
-    </Container>
+        {boxes?.map((box) => (
+          <Link key={box.id} to={`/box/${box.title}`}>
+            <Box key={box.id} existing>
+              <img src={IconBoxOld} alt="Icon Box" />
+              <p>{box.title}</p>
+            </Box>
+          </Link>
+        ))}
+      </Container>
+    </>
   );
 }

@@ -4,6 +4,7 @@ import { useState } from "react";
 import IconBox from "../assets/icon-box-primary.svg";
 import { postBoxById } from "../utils/api-boxes";
 import { useHistory } from "react-router-dom";
+import Header from "../components/Header";
 
 export default function AddNewBox() {
   const [title, setTitle] = useState("");
@@ -21,6 +22,7 @@ export default function AddNewBox() {
 
   return (
     <form onSubmit={handleSubmit}>
+      <Header>Eine neue Kiste</Header>
       <InputField
         title="Geben Sie der Box einen Namen"
         value={title}

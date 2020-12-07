@@ -1,8 +1,10 @@
+import Header from "../components/Header";
 import TextField from "../components/TextField";
 
 export default function GoodToKnow() {
   return (
     <>
+      <Header>Good to know</Header>
       <TextField>
         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
         eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam

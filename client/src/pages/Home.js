@@ -1,8 +1,10 @@
+import Header from "../components/Header";
 import TextField from "../components/TextField";
 
 export default function Home() {
   return (
     <>
+      <Header>Reduce, Reuse, Recycle</Header>
       <TextField>
         The 3 Rs Reduce, Reuse, Recycle – these three R words are an important
         part of sustainable living, as they help to cut down on the amount of

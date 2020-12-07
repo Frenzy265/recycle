@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { deleteBoxById, getBoxByTitle } from "../utils/api-boxes";
 import { useHistory, useParams } from "react-router-dom";
 import styled from "styled-components/macro";
+import Header from "../components/Header";
 
 const ListContainer = styled.ul`
   display: flex;
@@ -36,6 +37,7 @@ export default function BoxExist() {
 
   return (
     <>
+      <Header>{box.title}</Header>
       <FormInput title="Neuer Eintrag" icon={IconAdd} alt="Icon add" />
       <ListContainer>
         {box.items?.map((item) => (
