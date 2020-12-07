@@ -4,7 +4,7 @@ import { FormInput } from "../components/Form";
 import IconAdd from "../assets/icon-add-primary.svg";
 import Button from "../components/Button";
 import { useEffect, useState } from "react";
-import { deleteBoxById, getBoxByTitle } from "../utils/api-boxes";
+import { deleteBoxById, getBoxByTitle } from "../api/boxes";
 import { useHistory, useParams } from "react-router-dom";
 import styled from "styled-components/macro";
 import Header from "../components/Header";

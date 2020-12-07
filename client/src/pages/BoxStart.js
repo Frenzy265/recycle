@@ -3,7 +3,7 @@ import IconBoxOld from "../assets/icon-box-primary.svg";
 import IconBoxNew from "../assets/icon-box-new-primary.svg";
 import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
-import { getBoxes } from "../utils/api-boxes";
+import { getBoxes } from "../api/boxes";
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
 
