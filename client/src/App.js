@@ -10,7 +10,6 @@ import SearchResult from "./pages/SearchResult";
 import SearchStart from "./pages/SearchStart";
 import Home from "./pages/Home";
 import BoxNew from "./pages/BoxNew";
-import AppHeader from "./components/AppHeader";
 
 function App() {
   return (
@@ -18,7 +17,6 @@ function App() {
       <Router>
         <GlobalStyle />
         <PageContainer>
-          <AppHeader />
           <Switch>
             <Route exact path="/">
               <Home />
