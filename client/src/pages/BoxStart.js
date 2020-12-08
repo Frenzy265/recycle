@@ -35,8 +35,8 @@ export default function BoxStart() {
           </Box>
         </Link>
         {boxes?.map((box) => (
-          <Link key={box.id} to={`/box/${box.title}`}>
-            <Box key={box.id} existing>
+          <Link key={box._id} to={`/box/${box.title}`}>
+            <Box key={box._id} existing>
               <img src={IconBoxOld} alt="Icon Box" />
               <p>{box.title}</p>
             </Box>
