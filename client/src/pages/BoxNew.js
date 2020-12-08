@@ -2,7 +2,7 @@ import { InputField } from "../components/Input";
 import Button from "../components/Button";
 import { useState } from "react";
 import IconBox from "../assets/icon-box-primary.svg";
-import { postBoxById } from "../utils/api-boxes";
+import { postBoxById } from "../api/boxes";
 import { useHistory } from "react-router-dom";
 import Header from "../components/Header";
 

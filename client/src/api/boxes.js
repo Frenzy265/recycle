@@ -1,5 +1,5 @@
 export async function getBoxes() {
-  const response = await fetch("http://localhost:5000/boxes");
+  const response = await fetch("/api/boxes");
   const boxes = await response.json();
   return boxes;
 }
