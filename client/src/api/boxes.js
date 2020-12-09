@@ -5,10 +5,9 @@ export async function getBoxes() {
 }
 
 export async function getBoxByTitle(title) {
-  const response = await fetch(`http://localhost:5000/boxes?title=${title}`);
+  const response = await fetch(`/api/boxes/${title}`);
   const box = await response.json();
-  console.log(box);
-  return box[0];
+  return box;
 }
 
 export async function postBoxById(box) {
