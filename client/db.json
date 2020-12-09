@@ -1,12 +1,7 @@
 {
   "boxes": [
     {
-      "id": 2,
-      "title": "Kleidercontainer",
-      "items": ["klamotte"]
-    },
-    {
-      "titel": "ebay",
+      "title": "ebay",
       "items": ["klamotte"],
       "id": 3
     },

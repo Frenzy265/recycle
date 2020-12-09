@@ -27,12 +27,15 @@ export async function deleteBoxById(id) {
   });
 }
 
-export async function postItemById(id) {
-  const response = await fetch(`http://localhost:5000/boxes/${id}`, {
-    method: "POST",
-    body: JSON.stringify(id),
-    headers: { "Content-Type": "application/json" },
-  });
+export async function addItemByTitle(item, title) {
+  const response = await fetch(
+    `http://localhost:5000/boxes?title=${title}/items`,
+    {
+      method: "POST",
+      body: JSON.stringify(item),
+      headers: { "Content-Type": "application/json" },
+    }
+  );
   const newItem = await response.json();
   return newItem;
 }

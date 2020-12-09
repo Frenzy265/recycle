@@ -4,7 +4,11 @@ import { FormInput } from "../components/Form";
 import IconAdd from "../assets/icon-add-primary.svg";
 import Button from "../components/Button";
 import { useEffect, useState } from "react";
-import { deleteBoxById, getBoxByTitle, postItemById } from "../utils/api-boxes";
+import {
+  deleteBoxById,
+  getBoxByTitle,
+  addItemByTitle,
+} from "../utils/api-boxes";
 import { useHistory, useParams } from "react-router-dom";
 import styled from "styled-components/macro";
 import Header from "../components/Header";
@@ -39,7 +43,7 @@ export default function BoxExist() {
 
   const handleSubmitItem = async (event) => {
     event.preventDefault();
-    await postItemById([item]);
+    await addItemByTitle([item, box.title]);
   };
 
   return (
