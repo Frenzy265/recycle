@@ -4,7 +4,7 @@ import { FormInput } from "../components/Form";
 import IconAdd from "../assets/icon-add-primary.svg";
 import Button from "../components/Button";
 import { useEffect, useState } from "react";
-import { deleteBoxById, getBoxByTitle } from "../api/boxes";
+import { deleteBoxByTitle, getBoxByTitle } from "../api/boxes";
 import { useHistory, useParams } from "react-router-dom";
 import styled from "styled-components/macro";
 import Header from "../components/Header";
@@ -31,7 +31,7 @@ export default function BoxExist() {
   }, [title]);
 
   const handleDelete = async () => {
-    await deleteBoxById(box.id);
+    await deleteBoxByTitle(box.title);
     history.push("/box");
   };
 
