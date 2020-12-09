@@ -1,7 +1,13 @@
 require("dotenv").config();
+const { response } = require("express");
 const express = require("express");
 const path = require("path");
-const { getBoxes, getBoxByTitle, deleteBoxByTitle } = require("./lib/boxes");
+const {
+  getBoxes,
+  getBoxByTitle,
+  deleteBoxByTitle,
+  setBoxByTitle,
+} = require("./lib/boxes");
 
 const { connect } = require("./lib/database");
 
@@ -57,6 +63,17 @@ app.delete("/api/boxes/:title", async (request, response) => {
   } catch (error) {
     console.error(error);
     response.status(500).send("Unexpected error");
+  }
+});
+
+app.post("/api/boxes/", async (request, response) => {
+  const newBox = request.body;
+
+  try {
+    await setBoxByTitle(newBox.title, newBox.item);
+    response.send(`Successfully create the new box ${newBox.title}`);
+  } catch (error) {
+    response.status(500).send("An unexpected error");
   }
 });
 
