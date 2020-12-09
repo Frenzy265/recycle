@@ -24,8 +24,8 @@ export default function BoxExist() {
 
   useEffect(() => {
     async function fetchData() {
-      const existBox = await getBoxByTitle(title);
-      setBox(existBox);
+      const boxDetails = await getBoxByTitle(title);
+      setBox(boxDetails);
     }
     fetchData();
   }, [title]);
