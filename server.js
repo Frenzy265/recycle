@@ -6,6 +6,7 @@ const {
   getBoxByTitle,
   deleteBoxByTitle,
   setBoxByTitle,
+  setItemByTitle,
 } = require("./lib/boxes");
 
 const { connect } = require("./lib/database");
@@ -71,6 +72,17 @@ app.post("/api/boxes/", async (request, response) => {
   try {
     await setBoxByTitle(newBox.title, newBox.item);
     response.send(`Successfully create the new box ${newBox.title}`);
+  } catch (error) {
+    response.status(500).send("An unexpected error");
+  }
+});
+
+app.post(".api/boxes/:title/", async (request, response) => {
+  const title = request.params;
+  const newItem = request.body;
+  try {
+    await setItemByTitle(title, newItem.item);
+    response.send(`Successfully create the new item ${newItem.item}`);
   } catch (error) {
     response.status(500).send("An unexpected error");
   }
