@@ -15,7 +15,7 @@ export default function AddNewBox() {
     event.preventDefault();
     await postBoxById({
       title: title,
-      items: [item],
+      item: item,
     });
     history.push("/box");
   };
