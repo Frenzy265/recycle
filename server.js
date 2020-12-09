@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
-const { getBoxes } = require("./lib/boxes");
+const { getBoxes, getBoxByTitle } = require("./lib/boxes");
 
 const { connect } = require("./lib/database");
 
@@ -27,6 +27,21 @@ app.get("/api/boxes", async (request, response) => {
   } catch (error) {
     console.error(error);
     response.status(500).send("Unexpectet error");
+  }
+});
+
+app.get("/api/boxes/:title", async (request, response) => {
+  const { title } = request.params;
+  try {
+    const box = await getBoxByTitle(title);
+    if (!box) {
+      response.status(404).send("This box doesn't exists");
+      return;
+    }
+    response.send(box);
+  } catch (error) {
+    console.error(error);
+    response.status(500).send("Unexpected error");
   }
 });
 
