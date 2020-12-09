@@ -11,12 +11,12 @@ export async function getBoxByTitle(title) {
 }
 
 export async function postBoxById(box) {
-  const response = await fetch(`http://localhost:5000/boxes`, {
+  const response = await fetch("/api/boxes/", {
     method: "POST",
     body: JSON.stringify(box),
     headers: { "Content-Type": "application/json" },
   });
-  const newBox = await response.json();
+  const newBox = await response.text();
   return newBox;
 }
 
