@@ -20,8 +20,10 @@ export async function postBoxById(box) {
   return newBox;
 }
 
-export async function deleteBoxById(id) {
-  await fetch(`http://localhost:5000/boxes/${id}`, {
+export async function deleteBoxByTitle(title) {
+  const response = await fetch(`/api/boxes/${title}`, {
     method: "DELETE",
   });
+  const answer = await response.text();
+  return answer;
 }

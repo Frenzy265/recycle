@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
-const { getBoxes, getBoxByTitle } = require("./lib/boxes");
+const { getBoxes, getBoxByTitle, deleteBoxByTitle } = require("./lib/boxes");
 
 const { connect } = require("./lib/database");
 
@@ -39,6 +39,21 @@ app.get("/api/boxes/:title", async (request, response) => {
       return;
     }
     response.send(box);
+  } catch (error) {
+    console.error(error);
+    response.status(500).send("Unexpected error");
+  }
+});
+
+app.delete("/api/boxes/:title", async (request, response) => {
+  const { title } = request.params;
+  try {
+    const delBox = await deleteBoxByTitle(title);
+    if (delBox.deletedCount === 0) {
+      response.status(404).send("This box doesn't exists");
+      return;
+    }
+    response.send(`Die Box ${title} wurde erfolgreich recycled!`);
   } catch (error) {
     console.error(error);
     response.status(500).send("Unexpected error");
