@@ -35,23 +35,26 @@ export default function BoxExist() {
     history.push("/box");
   };
 
-  const [item, setItem] = useState();
+  const [newItem, setNewItem] = useState("");
 
-  const handleSubmitItem = async (event) => {
-    event.preventDefault();
-    await addItemByTitle([item, box.title]);
+  const handleSubmitItem = async () => {
+    // event.preventDefault();
+    await addItemByTitle(newItem, box.title);
+    setNewItem("");
+    // history.push(`/box/`);
+    // history.push(`/box/${box.title}`);
   };
 
   return (
     <>
       <Header>{box.title}</Header>
       <FormInput
-        onSubmit={handleSubmitItem}
+        onClick={handleSubmitItem}
         title="Neuer Eintrag"
         icon={IconAdd}
         alt="Icon add"
-        value={item}
-        onChange={(event) => setItem(event.target.value)}
+        value={newItem}
+        onChange={(event) => setNewItem(event.target.value)}
       />
       <ListContainer>
         {box.items?.map((item) => (
