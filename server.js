@@ -8,7 +8,7 @@ const {
   setBoxByTitle,
 } = require("./lib/boxes");
 
-const { getAllSearchResults } = require("./lib/searchbar");
+const { getAllResults } = require("./lib/searchbar");
 
 const { connect } = require("./lib/database");
 
@@ -80,7 +80,7 @@ app.post("/api/boxes/", async (request, response) => {
 
 app.get("/api/searchBar", async (request, response) => {
   try {
-    const allResults = await getAllSearchResults();
+    const allResults = await getAllResults();
     if (!allResults) {
       response.status(404).send("There are no search results");
       return;
