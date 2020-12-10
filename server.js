@@ -77,8 +77,8 @@ app.post("/api/boxes/", async (request, response) => {
   }
 });
 
-app.post(".api/boxes/:title/", async (request, response) => {
-  const title = request.params;
+app.post("/api/boxes/:title/", async (request, response) => {
+  const { title } = request.params;
   const newItem = request.body;
   try {
     await setItemByTitle(title, newItem.item);
