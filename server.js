@@ -8,6 +8,8 @@ const {
   setBoxByTitle,
 } = require("./lib/boxes");
 
+const { getAllSearchResults } = require("./lib/searchbar");
+
 const { connect } = require("./lib/database");
 
 const app = express();
@@ -73,6 +75,20 @@ app.post("/api/boxes/", async (request, response) => {
     response.send(`Successfully create the new box ${newBox.title}`);
   } catch (error) {
     response.status(500).send("An unexpected error");
+  }
+});
+
+app.get("/api/search", async (request, response) => {
+  try {
+    const allResults = await getAllSearchResults();
+    if (!allResults) {
+      response.status(404).send("There are no search results");
+      return;
+    }
+    response.json(allResults);
+  } catch (error) {
+    console.error(error);
+    response.status(500).send("Unexpectet error");
   }
 });
 
