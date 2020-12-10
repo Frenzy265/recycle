@@ -32,12 +32,12 @@ const ButtonIcon = styled.button`
   }
 `;
 
-export const FormInput = ({ title, icon, alt, onSubmit, onChange }) => {
+export const FormInput = ({ title, icon, alt, onClick, onChange }) => {
   return (
-    <Form onSubmit={onSubmit}>
+    <Form>
       <Input onChange={onChange} placeholder={title} size="29" />
       <ButtonIcon type="submit">
-        <img src={icon} alt={alt} />
+        <img src={icon} alt={alt} onClick={onClick} />
       </ButtonIcon>
     </Form>
   );
@@ -47,6 +47,6 @@ FormInput.propTypes = {
   title: PropTypes.string.isRequired,
   icon: PropTypes.any,
   alt: PropTypes.string.isRequired,
-  onSubmit: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
 };
