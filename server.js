@@ -78,7 +78,7 @@ app.post("/api/boxes/", async (request, response) => {
   }
 });
 
-app.get("/api/search", async (request, response) => {
+app.get("/api/searchBar", async (request, response) => {
   try {
     const allResults = await getAllSearchResults();
     if (!allResults) {
