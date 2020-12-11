@@ -27,3 +27,13 @@ export async function deleteBoxByTitle(title) {
   const answer = await response.text();
   return answer;
 }
+
+export async function addItemByTitle(item, title) {
+  const response = await fetch(`/api/boxes/${title}`, {
+    method: "POST",
+    body: JSON.stringify({ item }),
+    headers: { "Content-Type": "application/json" },
+  });
+  const newItem = await response.json();
+  return newItem;
+}
