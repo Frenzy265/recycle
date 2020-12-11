@@ -100,7 +100,7 @@ app.get("/api/searchBar/:title", async (request, response) => {
       response.status(404).send("This item doesn't exists");
       return;
     }
-    response.json(result);
+    response.status(200).json(result);
   } catch (error) {
     console.error(error);
     response.status(500).send("Unexpectet error");
