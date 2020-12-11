@@ -34,6 +34,6 @@ export async function addItemByTitle(item, title) {
     body: JSON.stringify({ item }),
     headers: { "Content-Type": "application/json" },
   });
-  const newItem = await response.text();
+  const newItem = await response.json();
   return newItem;
 }
