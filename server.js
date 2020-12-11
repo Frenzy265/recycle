@@ -8,7 +8,7 @@ const {
   setBoxByTitle,
 } = require("./lib/boxes");
 
-const { getAllResults } = require("./lib/searchbar");
+const { getAllResults, getResult } = require("./lib/searchbar");
 
 const { connect } = require("./lib/database");
 
@@ -86,6 +86,21 @@ app.get("/api/searchBar", async (request, response) => {
       return;
     }
     response.json(allResults);
+  } catch (error) {
+    console.error(error);
+    response.status(500).send("Unexpectet error");
+  }
+});
+
+app.get("/api/searchBar/:title", async (request, response) => {
+  const title = request.params;
+  try {
+    const result = await getResult(title);
+    if (!result) {
+      response.status(404).send("This item doesn't exists");
+      return;
+    }
+    response.json(result);
   } catch (error) {
     console.error(error);
     response.status(500).send("Unexpectet error");
