@@ -19,6 +19,7 @@ const ListContainer = styled.ul`
 
 export default function BoxExist() {
   const [box, setBox] = useState({});
+  const [newItem, setNewItem] = useState("");
   const { title } = useParams();
   const history = useHistory();
 
@@ -28,28 +29,24 @@ export default function BoxExist() {
       setBox(boxDetails);
     }
     fetchData();
-  }, [title]);
+  }, [title, newItem]);
 
   const handleDelete = async () => {
     await deleteBoxByTitle(box.title);
     history.push("/box");
   };
 
-  const [newItem, setNewItem] = useState("");
-
-  const handleSubmitItem = async () => {
-    // event.preventDefault();
+  const handleSubmitItem = async (event) => {
+    event.preventDefault();
     await addItemByTitle(newItem, box.title);
     setNewItem("");
-    // history.push(`/box/`);
-    // history.push(`/box/${box.title}`);
   };
 
   return (
     <>
       <Header>{box.title}</Header>
       <FormInput
-        onClick={handleSubmitItem}
+        onSubmit={handleSubmitItem}
         title="Neuer Eintrag"
         icon={IconAdd}
         alt="Icon add"
