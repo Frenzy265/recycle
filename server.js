@@ -77,12 +77,15 @@ app.post("/api/boxes/", async (request, response) => {
   }
 });
 
-app.post("/api/boxes/:title/", async (request, response) => {
+app.post("/api/boxes/:title", async (request, response) => {
   const { title } = request.params;
   const newItem = request.body;
   try {
-    await setItemByTitle(title, newItem.item);
-    response.send(`Successfully create the new item ${newItem.item}`);
+    const updateResult = await setItemByTitle(title, newItem.item);
+    if (updateResult.modifiedCount === 0) {
+      return response.status(404).send(`Box with ${title} not found`);
+    }
+    response.send(updateResult);
   } catch (error) {
     response.status(500).send("An unexpected error");
   }
