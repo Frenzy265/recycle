@@ -41,10 +41,10 @@ function App() {
             <Route exact path="/box">
               <BoxStart />
             </Route>
-            <Route path="/search">
+            <Route exact path="/search">
               <SearchStart />
             </Route>
-            <Route path="/search/:result">
+            <Route path="/search/:title">
               <SearchResult />
             </Route>
           </Switch>
