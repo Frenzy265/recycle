@@ -29,12 +29,14 @@ export default function SearchResult() {
             headline="Entsorgungsmöglichkeit"
             text={result.disposal}
           />
-          <TextBox
-            icon={IconLightBulb}
-            alt="Icon Lightbulb"
-            headline="Wussten Sie schon..."
-            text={result.gtn}
-          />
+          {result.gtn ? (
+            <TextBox
+              icon={IconLightBulb}
+              alt="Icon Lightbulb"
+              headline="Wussten Sie schon..."
+              text={result.gtn}
+            />
+          ) : null}
         </>
       )}
     </>
