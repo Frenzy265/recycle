@@ -6,6 +6,7 @@ const {
   getBoxByTitle,
   deleteBoxByTitle,
   setBoxByTitle,
+  setItemByTitle,
 } = require("./lib/boxes");
 
 const { getAllResults, getResult } = require("./lib/searchbar");
@@ -104,6 +105,20 @@ app.get("/api/searchBar/:title", async (request, response) => {
   } catch (error) {
     console.error(error);
     response.status(500).send("Unexpectet error");
+  }
+});
+
+app.post("/api/boxes/:title", async (request, response) => {
+  const { title } = request.params;
+  const newItem = request.body;
+  try {
+    const updateResult = await setItemByTitle(title, newItem.item);
+    if (updateResult.modifiedCount === 0) {
+      return response.status(404).send(`Box with ${title} not found`);
+    }
+    response.send(updateResult);
+  } catch (error) {
+    response.status(500).send("An unexpected error");
   }
 });
 
