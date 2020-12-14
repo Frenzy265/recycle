@@ -8,7 +8,7 @@ import { InputField } from "../components/Input";
 
 export default function Search() {
   const [results, setResults] = useState([]);
-  const [searchFilter, setSearchFilter] = useState([]);
+  const [searchFilter, setSearchFilter] = useState("");
 
   useEffect(() => {
     async function fetchData() {
