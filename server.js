@@ -79,6 +79,20 @@ app.post("/api/boxes/", async (request, response) => {
   }
 });
 
+app.post("/api/boxes/:title", async (request, response) => {
+  const { title } = request.params;
+  const newItem = request.body;
+  try {
+    const updateResult = await setItemByTitle(title, newItem.item);
+    if (updateResult.modifiedCount === 0) {
+      return response.status(404).send(`Box with ${title} not found`);
+    }
+    response.send(updateResult);
+  } catch (error) {
+    response.status(500).send("An unexpected error");
+  }
+});
+
 app.get("/api/searchBar", async (request, response) => {
   try {
     const allResults = await getAllResults();
@@ -105,20 +119,6 @@ app.get("/api/searchBar/:title", async (request, response) => {
   } catch (error) {
     console.error(error);
     response.status(500).send("Unexpectet error");
-  }
-});
-
-app.post("/api/boxes/:title", async (request, response) => {
-  const { title } = request.params;
-  const newItem = request.body;
-  try {
-    const updateResult = await setItemByTitle(title, newItem.item);
-    if (updateResult.modifiedCount === 0) {
-      return response.status(404).send(`Box with ${title} not found`);
-    }
-    response.send(updateResult);
-  } catch (error) {
-    response.status(500).send("An unexpected error");
   }
 });
 
