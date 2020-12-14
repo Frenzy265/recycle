@@ -1,20 +1,55 @@
 import styled from "styled-components/macro";
-import { BasicStyle, BasicSize } from "../globalstyle";
+import { BasicStyle } from "../globalstyle";
+import PropTypes from "prop-types";
 
-const Card = styled.div`
+const Container = styled.div`
   ${BasicStyle};
-  ${BasicSize};
   background-color: var(--secondary-color);
-  color: var(--main-colorr);
+  color: var(--primary-color);
+  align-items: center;
+  justify-content: space-between;
+  min-height: 130px;
+  width: 80vw;
+  padding: 15px;
 
   img {
     height: 70px;
     width: 70px;
-  }
-
-  p {
-    text-align: left;
+    margin: 0 20px;
   }
 `;
 
-export default Card;
+const Textbox = styled.div`
+  margin-left: 20px;
+  p {
+    margin: 0px;
+  }
+
+  h2 {
+    margin: 0;
+    text-transform: uppercase;
+  }
+`;
+
+export const Card = ({ title, infoOne, infoTwo, icon, alt }) => {
+  return (
+    <>
+      <Container>
+        <Textbox>
+          <h2>{title}</h2>
+          <p>{infoOne}</p>
+          <p>{infoTwo}</p>
+        </Textbox>
+        <img src={icon} alt={alt} />
+      </Container>
+    </>
+  );
+};
+
+Card.propTypes = {
+  icon: PropTypes.any,
+  alt: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  infoOne: PropTypes.string.isRequired,
+  infoTwo: PropTypes.string,
+};
