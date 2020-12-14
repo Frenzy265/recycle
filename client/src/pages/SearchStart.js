@@ -1,14 +1,14 @@
-import { FormInput } from "../components/Form";
 import { List } from "../components/ListItem";
-import IconSearch from "../assets/icon-search-primary.svg";
 import IconArrowForward from "../assets/icon-arrow-forward-primary.svg";
 import Header from "../components/Header";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getAllResults } from "../api/search";
+import { InputField } from "../components/Input";
 
 export default function Search() {
   const [results, setResults] = useState([]);
+  const [searchFilter, setSearchFilter] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -21,20 +21,23 @@ export default function Search() {
   return (
     <>
       <Header>Suche</Header>
-      <FormInput
+      <InputField
+        value={searchFilter}
         title="Was möchtest du recyceln?"
-        icon={IconSearch}
-        alt="Icon Search"
+        onChange={(event) => setSearchFilter(event.target.value)}
       />
-      {results?.map((result) => (
-        <Link key={result._id} to={`/search/${result.title}`}>
-          <List
-            item={result.title}
-            icon={IconArrowForward}
-            alt="Icon Arrow Forward"
-          />
-        </Link>
-      ))}
+
+      {results
+        .filter((result) => result.title.includes(searchFilter))
+        .map((filteredResult) => (
+          <Link key={filteredResult._id} to={`/search/${filteredResult.title}`}>
+            <List
+              item={filteredResult.title}
+              icon={IconArrowForward}
+              alt="Icon Arrow Forward"
+            />
+          </Link>
+        ))}
     </>
   );
 }
