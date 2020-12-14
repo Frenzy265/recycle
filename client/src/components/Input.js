@@ -29,6 +29,6 @@ export const InputField = ({ title, value, onChange }) => {
 
 InputField.propTypes = {
   title: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
 };
