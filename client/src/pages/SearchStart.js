@@ -24,11 +24,11 @@ export default function Search() {
       <InputField
         value={searchFilter}
         title="Was möchtest du recyceln?"
-        onChange={(event) => setSearchFilter(event.target.value)}
+        onChange={(event) => setSearchFilter(event.target.value.toLowerCase())}
       />
 
       {results
-        .filter((result) => result.title.includes(searchFilter))
+        .filter((result) => result.title.toLowerCase().includes(searchFilter))
         .map((filteredResult) => (
           <Link key={filteredResult._id} to={`/search/${filteredResult.title}`}>
             <List
