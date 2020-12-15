@@ -1,19 +1,37 @@
 import Header from "../components/Header";
-import TextField from "../components/TextField";
+import { Card } from "../components/Card";
+import IconRecycle from "../assets/icon-recycle-action.svg";
+import IconBox from "../assets/icon-box-action.svg";
 
 export default function Home() {
   return (
     <>
       <Header>Reduce, Reuse, Recycle</Header>
-      <TextField>
-        The 3 Rs Reduce, Reuse, Recycle – these three R words are an important
-        part of sustainable living, as they help to cut down on the amount of
-        waste we have to throw away. Its Really simple! Reduce the amount of
-        waste you produce. Reuse items as much as you can before replacing them.
-        Recycle items wherever possible. Using the 3 Rs also helps to minimise
-        the amount of space needed for landfill sites, where waste materials are
-        disposed of.
-      </TextField>
+      <Card
+        title="Reduce"
+        icon={IconRecycle}
+        alt="Icon Recycle"
+        infoOne="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+      />
+      <Card
+        title="Recyclingkisten"
+        icon={IconBox}
+        alt="Icon Box"
+        infoOne="Offene Boxen: 5"
+        infoTwo="Geschlossene Boxen: 10"
+      />
+      <Card
+        title="Reuse"
+        icon={IconRecycle}
+        alt="Icon Recycle"
+        infoOne="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+      />
+      <Card
+        title="Recycle"
+        icon={IconRecycle}
+        alt="Icon Recycle"
+        infoOne="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
+      />
     </>
   );
 }
