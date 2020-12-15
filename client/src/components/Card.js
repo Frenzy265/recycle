@@ -10,17 +10,15 @@ const Container = styled.div`
   justify-content: space-between;
   min-height: 130px;
   width: 80vw;
-  padding: 15px;
+  padding: 20px;
 
   img {
-    height: 70px;
-    width: 70px;
-    margin: 0 20px;
+    width: 50px;
+    margin-left: 10px;
   }
 `;
 
 const Textbox = styled.div`
-  margin-left: 20px;
   p {
     margin: 0px;
   }
