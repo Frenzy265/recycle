@@ -3,7 +3,7 @@ import GlobalStyle from "./globalstyle";
 import { Navbar } from "./components/Navbar";
 import PageContainer from "./components/PageContainer";
 
-import GoodToKnow from "./pages/GoodToKnow";
+import Challenge from "./pages/Challenge";
 import BoxExist from "./pages/BoxExist";
 import BoxStart from "./pages/BoxStart";
 import SearchResult from "./pages/SearchResult";
@@ -29,8 +29,8 @@ function App() {
             <Route exact path="/">
               {page ? <SplashScreen /> : <Home />}
             </Route>
-            <Route path="/goodtoknow">
-              <GoodToKnow />
+            <Route path="/challenge">
+              <Challenge />
             </Route>
             <Route exact path="/box/new">
               <BoxNew />
