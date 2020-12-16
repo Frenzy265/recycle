@@ -54,7 +54,7 @@ export const Task = ({ done, label, task }) => {
     <>
       <Container>
         <p>{task}</p>
-        <LabelContainer>
+        <LabelContainer done={done}>
           <button> {done ? "DONE" : "DO"}</button>
           <span>{label}</span>
         </LabelContainer>
