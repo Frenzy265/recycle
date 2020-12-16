@@ -8,12 +8,13 @@ const Container = styled.div`
   color: var(--primary-color);
   align-items: center;
   justify-content: space-between;
-  min-height: 130px;
+  min-height: 110px;
   width: 80vw;
-  padding: 20px;
+  padding: 0 20px;
+  font-size: 14px;
 
   img {
-    width: 50px;
+    width: 40px;
     margin-left: 10px;
   }
 `;
