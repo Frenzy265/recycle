@@ -6,6 +6,13 @@ export async function getAllTasks() {
 
 export async function countAllTasks() {
   const response = await fetch("/api/challenge");
-  const amount = await response.json().length();
+  const amount = await response.json();
+  const length = amount.length;
+  return length;
+}
+
+export async function countDoneTasks() {
+  const response = await fetch("/api/challenge/done=false");
+  const amount = await response.json();
   return amount;
 }
