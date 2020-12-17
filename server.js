@@ -123,7 +123,7 @@ app.get("/api/searchBar/:title", async (request, response) => {
   }
 });
 
-app.get("api/challenge/", async (request, response) => {
+app.get("/api/challenge", async (request, response) => {
   try {
     const allTasks = await getAllTasks();
     if (!allTasks) {
