@@ -4,27 +4,18 @@ import IconRecycle from "../assets/icon-recycle-action.svg";
 import IconBox from "../assets/icon-box-action.svg";
 import IconTrophy from "../assets/icon-trophy-action.svg";
 import { useEffect, useState } from "react";
-import { countAllTasks, countDoneTasks } from "../api/challenge";
+import { countTasks } from "../api/challenge";
 
 export default function Home() {
-  const [amountTasks, setAmountTasks] = useState();
-  const [amountDoneTasks, setAmountDoneTasks] = useState();
+  const [amountTasks, setAmountTasks] = useState({ done: 0, all: 0 });
 
   useEffect(() => {
     async function fetchData() {
-      const arrayLength = await countAllTasks();
-      setAmountTasks(arrayLength);
+      const result = await countTasks();
+      setAmountTasks(result);
     }
     fetchData();
-  }, []);
-
-  useEffect(() => {
-    async function fetchData() {
-      const arrayLength = await countDoneTasks();
-      setAmountDoneTasks(arrayLength);
-    }
-    fetchData();
-  }, []);
+  }, [amountTasks]);
 
   return (
     <>
@@ -39,8 +30,8 @@ export default function Home() {
         title="Challenges"
         icon={IconTrophy}
         alt="Icon Trophy"
-        infoOne={`Gesamtanzahl Aufgaben: ${amountTasks}`}
-        infoTwo={`Gelöste Aufgaben: ${amountDoneTasks}`}
+        infoOne={`Gesamtanzahl Aufgaben: ${amountTasks?.done}`}
+        infoTwo={`Gelöste Aufgaben: ${amountTasks?.all}`}
       />
       <Card
         title="Reuse"
