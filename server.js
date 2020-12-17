@@ -12,7 +12,7 @@ const {
 const { getAllResults, getResult } = require("./lib/searchbar");
 
 const { connect } = require("./lib/database");
-const { getAllTasks } = require("./lib/challenge");
+const { getAllTasks, countDoneTasks } = require("./lib/challenge");
 
 const app = express();
 app.use(express.json());
@@ -131,6 +131,20 @@ app.get("/api/challenge", async (request, response) => {
       return;
     }
     response.json(allTasks);
+  } catch (error) {
+    console.error(error);
+    response.status(500).send("Unexpected error");
+  }
+});
+
+app.get("/api/challenge/done=false", async (request, response) => {
+  try {
+    const doneTasks = await countDoneTasks();
+    if (!doneTasks) {
+      response.status(404).send("There are no challenges done");
+      return;
+    }
+    response.json(doneTasks);
   } catch (error) {
     console.error(error);
     response.status(500).send("Unexpected error");
