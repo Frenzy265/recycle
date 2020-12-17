@@ -12,7 +12,7 @@ const {
 const { getAllResults, getResult } = require("./lib/searchbar");
 
 const { connect } = require("./lib/database");
-const { getAllTasks } = require("./lib/challenges");
+const { getAllTasks } = require("./lib/challenge");
 
 const app = express();
 app.use(express.json());
