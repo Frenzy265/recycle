@@ -3,8 +3,20 @@ import { Card } from "../components/Card";
 import IconRecycle from "../assets/icon-recycle-action.svg";
 import IconBox from "../assets/icon-box-action.svg";
 import IconTrophy from "../assets/icon-trophy-action.svg";
+import { useEffect, useState } from "react";
+import { countTasks } from "../api/challenge";
 
 export default function Home() {
+  const [amountTasks, setAmountTasks] = useState({ done: 0, all: 0 });
+
+  useEffect(() => {
+    async function fetchData() {
+      const result = await countTasks();
+      setAmountTasks(result);
+    }
+    fetchData();
+  }, [amountTasks]);
+
   return (
     <>
       <Header>Reduce, Reuse, Recycle</Header>
@@ -18,8 +30,8 @@ export default function Home() {
         title="Challenges"
         icon={IconTrophy}
         alt="Icon Trophy"
-        infoOne="Offene Aufgaben: 5"
-        infoTwo="Gelöste Aufgaben: 10"
+        infoOne={`Gesamtanzahl Aufgaben: ${amountTasks?.done}`}
+        infoTwo={`Gelöste Aufgaben: ${amountTasks?.all}`}
       />
       <Card
         title="Reuse"

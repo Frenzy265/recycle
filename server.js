@@ -12,6 +12,11 @@ const {
 const { getAllResults, getResult } = require("./lib/searchbar");
 
 const { connect } = require("./lib/database");
+const {
+  getAllTasks,
+  countDoneTasks,
+  countAllTasks,
+} = require("./lib/challenge");
 
 const app = express();
 app.use(express.json());
@@ -119,6 +124,31 @@ app.get("/api/searchBar/:title", async (request, response) => {
   } catch (error) {
     console.error(error);
     response.status(500).send("Unexpectet error");
+  }
+});
+
+app.get("/api/challenge", async (request, response) => {
+  try {
+    const allTasks = await getAllTasks();
+    if (!allTasks) {
+      response.status(404).send("There are no challenge results");
+      return;
+    }
+    response.json(allTasks);
+  } catch (error) {
+    console.error(error);
+    response.status(500).send("Unexpected error");
+  }
+});
+
+app.get("/api/challenge/statistic", async (request, response) => {
+  try {
+    const done = await countDoneTasks();
+    const all = await countAllTasks();
+    response.status(200).json({ done, all });
+  } catch (error) {
+    console.error(error);
+    response.status(500).send("Unexpected error");
   }
 });
 
