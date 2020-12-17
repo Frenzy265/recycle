@@ -4,15 +4,8 @@ export async function getAllTasks() {
   return results;
 }
 
-export async function countAllTasks() {
-  const response = await fetch("/api/challenge");
-  const amount = await response.json();
-  const length = amount.length;
-  return length;
-}
-
-export async function countDoneTasks() {
-  const response = await fetch("/api/challenge/done=false");
-  const amount = await response.json();
-  return amount;
+export async function countTasks() {
+  const response = await fetch("/api/challenge/statistic");
+  const statistic = await response.json();
+  return statistic;
 }
