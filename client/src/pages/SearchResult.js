@@ -22,7 +22,7 @@ export default function SearchResult() {
     <>
       {result && (
         <>
-          <Header>{result.title}</Header>
+          <Header>{result.title.replaceAll(/\s/g, " / ")}</Header>
           <TextBox
             icon={IconRecycle}
             alt="Icon Recycle"

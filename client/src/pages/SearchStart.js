@@ -32,7 +32,7 @@ export default function Search() {
         .map((filteredResult) => (
           <Link key={filteredResult._id} to={`/search/${filteredResult.title}`}>
             <List
-              item={filteredResult.title}
+              item={filteredResult.title.replaceAll(/\s/g, " / ")}
               icon={IconArrowForward}
               alt="Icon Arrow Forward"
             />
