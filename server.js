@@ -73,6 +73,22 @@ app.delete("/api/boxes/:title", async (request, response) => {
   }
 });
 
+app.delete("/api/boxes/:title/:item", async (request, response) => {
+  const { title } = request.params;
+  const { item } = request.params;
+  try {
+    const delItem = await deleteBoxByTitle(title, item);
+    if (delItem.deletedCount === 0) {
+      response.status(404).send("This item doesn't exists");
+      return;
+    }
+    response.send(`Das Item ${item} wurde erfolgreich recycled!`);
+  } catch (error) {
+    console.error(error);
+    response.status(500).send("Unexpected error");
+  }
+});
+
 app.post("/api/boxes/", async (request, response) => {
   const newBox = request.body;
 
