@@ -8,6 +8,7 @@ const ListItem = styled.li`
   background-color: var(--secondary-color);
   color: var(--primary-color);
   justify-content: space-between;
+  max-width: 300px;
   margin: 0.25rem 0;
 `;
 

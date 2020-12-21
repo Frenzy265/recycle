@@ -5,6 +5,11 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getAllResults } from "../api/search";
 import { InputField } from "../components/Input";
+import styled from "styled-components/macro";
+
+const Navlink = styled(Link)`
+  max-width: 80%;
+`;
 
 export default function Search() {
   const [results, setResults] = useState([]);
@@ -30,13 +35,16 @@ export default function Search() {
       {results
         .filter((result) => result.title.toLowerCase().includes(searchFilter))
         .map((filteredResult) => (
-          <Link key={filteredResult._id} to={`/search/${filteredResult.title}`}>
+          <Navlink
+            key={filteredResult._id}
+            to={`/search/${filteredResult.title}`}
+          >
             <List
-              item={filteredResult.title}
+              item={filteredResult.title.replaceAll(/\s/g, " / ")}
               icon={IconArrowForward}
               alt="Icon Arrow Forward"
             />
-          </Link>
+          </Navlink>
         ))}
     </>
   );
