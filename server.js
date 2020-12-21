@@ -7,6 +7,7 @@ const {
   deleteBoxByTitle,
   setBoxByTitle,
   setItemByTitle,
+  deleteItemByName,
 } = require("./lib/boxes");
 
 const { getAllResults, getResult } = require("./lib/searchbar");
@@ -73,15 +74,16 @@ app.delete("/api/boxes/:title", async (request, response) => {
   }
 });
 
-app.delete("/api/boxes/:title/:item", async (request, response) => {
+app.patch("/api/boxes/:title/:item", async (request, response) => {
   const { title } = request.params;
   const { item } = request.params;
   try {
-    const delItem = await deleteBoxByTitle(title, item);
+    const delItem = await deleteItemByName(title, item);
     if (delItem.deletedCount === 0) {
       response.status(404).send("This item doesn't exists");
       return;
     }
+
     response.send(`Das Item ${item} wurde erfolgreich recycled!`);
   } catch (error) {
     console.error(error);
