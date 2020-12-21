@@ -17,6 +17,7 @@ const {
   getAllTasks,
   countDoneTasks,
   countAllTasks,
+  changeTaskStatus,
 } = require("./lib/challenge");
 
 const app = express();
@@ -167,6 +168,20 @@ app.get("/api/challenge/statistic", async (request, response) => {
   } catch (error) {
     console.error(error);
     response.status(500).send("Unexpected error");
+  }
+});
+
+app.patch("/api/challenge/:_id", async (request, response) => {
+  const { id } = request.params;
+  const newStatus = request.body;
+  try {
+    const updateResult = await changeTaskStatus(id, newStatus.done);
+    if (updateResult.modifiedCount === 0) {
+      return response.status(404).send("Task not found");
+    }
+    response.send(updateResult);
+  } catch (error) {
+    response.status(500).send("An unexpected error");
   }
 });
 
