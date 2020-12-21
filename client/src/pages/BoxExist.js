@@ -8,6 +8,8 @@ import { deleteBoxByTitle, getBoxByTitle, addItemByTitle } from "../api/boxes";
 import { useHistory, useParams } from "react-router-dom";
 import styled from "styled-components/macro";
 import Header from "../components/Header";
+import IconMinus from "../assets/icon-minus-action.svg";
+import { deleteItemByName } from "../api/boxes";
 
 const ListContainer = styled.ul`
   display: flex;
@@ -22,6 +24,7 @@ export default function BoxExist() {
   const [newItem, setNewItem] = useState("");
   const { title } = useParams();
   const history = useHistory();
+  // const [delItem, setDelItem] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -29,9 +32,14 @@ export default function BoxExist() {
       setBox(boxDetails);
     }
     fetchData();
-  }, [title, newItem]);
+  }, [title, newItem, box.items]);
 
-  const handleDelete = async () => {
+  const handleDeleteItem = async (item) => {
+    console.log(item);
+    await deleteItemByName(box.title, item);
+  };
+
+  const handleDeleteBox = async () => {
     await deleteBoxByTitle(box.title);
     history.push("/box");
   };
@@ -58,12 +66,13 @@ export default function BoxExist() {
           <List
             key={item}
             item={item}
-            icon={IconRecycle}
-            alt={"Icon Recycle"}
+            icon={IconMinus}
+            alt={"Icon Delete"}
+            onClick={() => handleDeleteItem(item)}
           />
         ))}
       </ListContainer>
-      <Button onClick={handleDelete}>
+      <Button onClick={handleDeleteBox}>
         <p>Kiste erfolgreich recycled</p>
         <img src={IconRecycle} alt="Icon recycle" />
       </Button>

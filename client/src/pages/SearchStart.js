@@ -1,5 +1,5 @@
 import { List } from "../components/ListItem";
-import IconArrowForward from "../assets/icon-arrow-forward-primary.svg";
+import IconArrowForward from "../assets/icon-arrow-forward-action.svg";
 import Header from "../components/Header";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";

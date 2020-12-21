@@ -28,6 +28,14 @@ export async function deleteBoxByTitle(title) {
   return answer;
 }
 
+export async function deleteItemByName(title, item) {
+  const response = await fetch(`/api/boxes/${title}/${item}`, {
+    method: "PATCH",
+  });
+  const answer = await response.text();
+  return answer;
+}
+
 export async function addItemByTitle(item, title) {
   const response = await fetch(`/api/boxes/${title}`, {
     method: "POST",
