@@ -49,13 +49,13 @@ const LabelContainer = styled.div`
   }
 `;
 
-export const Task = ({ done, label, task }) => {
+export const Task = ({ done, label, task, onClick }) => {
   return (
     <>
       <Container>
         <p>{task}</p>
         <LabelContainer done={done}>
-          <button> {done ? "DONE" : "DO"}</button>
+          <button onClick={onClick}> {done ? "DONE" : "DO"} </button>
           <span>{label}</span>
         </LabelContainer>
       </Container>
@@ -71,4 +71,5 @@ Task.propTypes = {
   label: PropTypes.string.isRequired,
   task: PropTypes.string.isRequired,
   done: PropTypes.bool,
+  onClick: PropTypes.func.isRequired,
 };
