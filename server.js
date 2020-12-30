@@ -171,7 +171,7 @@ app.get("/api/challenge/statistic", async (request, response) => {
   }
 });
 
-app.patch("/api/challenge/:_id", async (request, response) => {
+app.patch("/api/challenge/:id", async (request, response) => {
   const { id } = request.params;
   const newStatus = request.body;
   try {
