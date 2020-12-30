@@ -52,7 +52,7 @@ export default function BoxExist() {
 
   return (
     <>
-      <Header>{box.title}</Header>
+      <Header title={box.title} />
       <FormInput
         onSubmit={handleSubmitItem}
         title="Neuer Eintrag"
