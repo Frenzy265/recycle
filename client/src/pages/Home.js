@@ -30,8 +30,8 @@ export default function Home() {
         title="Challenges"
         icon={IconTrophy}
         alt="Icon Trophy"
-        infoOne={`Gesamtanzahl Aufgaben: ${amountTasks?.done}`}
-        infoTwo={`Gelöste Aufgaben: ${amountTasks?.all}`}
+        infoOne={`Gesamtanzahl Aufgaben: ${amountTasks?.all}`}
+        infoTwo={`Gelöste Aufgaben: ${amountTasks?.done}`}
       />
       <Card
         title="Reuse"
