@@ -10,7 +10,7 @@ const Container = styled.div`
   justify-content: space-between;
   min-height: 110px;
   width: 80vw;
-  padding: 0 20px;
+  padding: 20px;
   font-size: 14px;
 
   img {
