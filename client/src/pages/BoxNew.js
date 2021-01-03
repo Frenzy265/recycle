@@ -22,7 +22,7 @@ export default function AddNewBox() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Header>Eine neue Kiste</Header>
+      <Header>Eine neue Box</Header>
       <InputField
         title="Geben Sie der Box einen Namen"
         value={title}
@@ -34,7 +34,7 @@ export default function AddNewBox() {
         onChange={(event) => setItem(event.target.value)}
       />
       <Button type="submit" value="AddNewBox">
-        <p>Erstelle eine neue Kiste</p>
+        <p>Erstelle eine neue Box</p>
         <img src={IconBox} alt="Icon Box" />
       </Button>
     </form>

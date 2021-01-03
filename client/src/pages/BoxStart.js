@@ -26,12 +26,12 @@ export default function BoxStart() {
 
   return (
     <>
-      <Header>Recyclingkisten</Header>
+      <Header>Sammelboxen</Header>
       <Container>
         <Link to="/box/new">
           <Box>
             <img src={IconBoxNew} alt="Icon Box" />
-            <p>Neue Kiste</p>
+            <p>Neue Box</p>
           </Box>
         </Link>
         {boxes?.map((box) => (
