@@ -22,7 +22,7 @@ export default function AddNewBox() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Header title="Eine neue Kiste" />
+      <Header>Eine neue Kiste</Header>
       <InputField
         title="Geben Sie der Box einen Namen"
         value={title}

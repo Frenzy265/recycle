@@ -26,7 +26,7 @@ export default function BoxStart() {
 
   return (
     <>
-      <Header title="Recyclingkisten" />
+      <Header>Recyclingkisten</Header>
       <Container>
         <Link to="/box/new">
           <Box>

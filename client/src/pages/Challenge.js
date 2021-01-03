@@ -16,7 +16,7 @@ export default function Challenge() {
 
   return (
     <>
-      <Header title="Challenge" />
+      <Header>Challenge</Header>
       {tasks?.map((task) => (
         <Task
           key={task._id}

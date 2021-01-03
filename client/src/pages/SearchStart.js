@@ -25,7 +25,7 @@ export default function Search() {
 
   return (
     <>
-      <Header title="Suche" />
+      <Header>Suche</Header>
       <InputField
         value={searchFilter}
         title="Was möchtest du recyceln?"

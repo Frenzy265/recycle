@@ -19,7 +19,7 @@ export default function Home() {
 
   return (
     <>
-      <Header title="Reduce, Reuse, Recycle"></Header>
+      <Header>Reduce, Reuse, Recycle</Header>
       <Card
         title="Reduce"
         icon={IconRecycle}
