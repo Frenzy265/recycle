@@ -10,6 +10,7 @@ const Header = styled.header`
   word-wrap: break-word;
   line-height: 30px;
   text-align: center;
+  justify-content: center;
   width: 100%;
   background-color: var(--primary-color);
 `;

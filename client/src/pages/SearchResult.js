@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import { TextBox } from "../components/TextBox";
 import IconRecycle from "../assets/icon-recycle-primary.svg";
 import IconLightBulb from "../assets/icon-lightbulb-action.svg";
-import Header from "../components/Header";
 import { getResult } from "../api/search";
 import { useParams } from "react-router-dom";
+import { HeaderBackButton } from "../components/HeaderBackButton";
 
 export default function SearchResult() {
   const [result, setResult] = useState();
@@ -22,7 +22,9 @@ export default function SearchResult() {
     <>
       {result && (
         <>
-          <Header>{result.title.replaceAll(/\s/g, " / ")}</Header>
+          <HeaderBackButton
+            headline={result.title.replaceAll(/\s/g, " / ")}
+          ></HeaderBackButton>
           <TextBox
             icon={IconRecycle}
             alt="Icon Recycle"
