@@ -7,10 +7,9 @@ import { useEffect, useState } from "react";
 import { deleteBoxByTitle, getBoxByTitle, addItemByTitle } from "../api/boxes";
 import { useHistory, useParams } from "react-router-dom";
 import styled from "styled-components/macro";
-import Header from "../components/Header";
 import IconMinus from "../assets/icon-minus-action.svg";
 import { deleteItemByName } from "../api/boxes";
-import { BackButton } from "../components/BackButton";
+import { HeaderBackButton } from "../components/HeaderBackButton";
 
 const ListContainer = styled.ul`
   display: flex;
@@ -53,10 +52,7 @@ export default function BoxExist() {
 
   return (
     <>
-      <Header>
-        <BackButton />
-        {box.title}
-      </Header>
+      <HeaderBackButton headline={box.title}></HeaderBackButton>
       <FormInput
         onSubmit={handleSubmitItem}
         title="Neuer Eintrag"
