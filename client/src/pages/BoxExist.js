@@ -10,6 +10,7 @@ import styled from "styled-components/macro";
 import Header from "../components/Header";
 import IconMinus from "../assets/icon-minus-action.svg";
 import { deleteItemByName } from "../api/boxes";
+import { BackButton } from "../components/BackButton";
 
 const ListContainer = styled.ul`
   display: flex;
@@ -52,7 +53,10 @@ export default function BoxExist() {
 
   return (
     <>
-      <Header title={box.title} />
+      <Header>
+        <BackButton />
+        {box.title}
+      </Header>
       <FormInput
         onSubmit={handleSubmitItem}
         title="Neuer Eintrag"

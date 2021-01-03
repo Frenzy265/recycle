@@ -5,6 +5,7 @@ import IconLightBulb from "../assets/icon-lightbulb-action.svg";
 import Header from "../components/Header";
 import { getResult } from "../api/search";
 import { useParams } from "react-router-dom";
+import { BackButton } from "../components/BackButton";
 
 export default function SearchResult() {
   const [result, setResult] = useState();
@@ -22,7 +23,10 @@ export default function SearchResult() {
     <>
       {result && (
         <>
-          <Header title={result.title.replaceAll(/\s/g, " / ")} />
+          <Header>
+            <BackButton />
+            {result.title.replaceAll(/\s/g, " / ")}
+          </Header>
           <TextBox
             icon={IconRecycle}
             alt="Icon Recycle"
