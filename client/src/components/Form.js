@@ -14,6 +14,7 @@ const Input = styled.input`
   background-color: var(--action-color);
   color: var(--primary-color);
   border: none;
+  outline: none;
 
   ::placeholder {
     color: var(--secondary-color);

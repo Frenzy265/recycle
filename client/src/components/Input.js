@@ -9,6 +9,7 @@ const Input = styled.input`
   color: var(--primary-color);
   justify-content: space-around;
   margin: 8px 0;
+  outline: none;
 
   ::placeholder {
     color: var(--secondary-color);
