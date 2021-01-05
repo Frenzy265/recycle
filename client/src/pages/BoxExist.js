@@ -72,7 +72,7 @@ export default function BoxExist() {
           />
         ))}
       </ListContainer>
-      <Button onClick={handleDeleteBox}>
+      <Button active onClick={handleDeleteBox}>
         <p>Box schließen</p>
         <img src={IconRecycle} alt="Icon recycle" />
       </Button>
