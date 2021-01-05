@@ -4,7 +4,7 @@ import Header from "../components/Header";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getAllResults } from "../api/search";
-import { InputField } from "../components/Input";
+import { Searchfield } from "../components/Searchfield";
 
 export default function Search() {
   const [results, setResults] = useState([]);
@@ -21,7 +21,7 @@ export default function Search() {
   return (
     <>
       <Header>Suche</Header>
-      <InputField
+      <Searchfield
         value={searchFilter}
         title="Was möchtest du recyceln?"
         onChange={(event) => setSearchFilter(event.target.value.toLowerCase())}
