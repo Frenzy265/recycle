@@ -9,7 +9,7 @@ const ListItem = styled.li`
   color: var(--primary-color);
   justify-content: space-between;
   max-width: 300px;
-  margin: 0.25rem 0;
+  margin: 0.1rem 0;
 `;
 
 const Button = styled.button`
