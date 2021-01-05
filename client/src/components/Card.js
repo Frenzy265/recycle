@@ -1,13 +1,17 @@
 import styled from "styled-components/macro";
-import { BasicStyle } from "../globalstyle";
 import PropTypes from "prop-types";
 
 const Container = styled.div`
-  ${BasicStyle};
+  align-items: center;
+  border-radius: 7px;
+  border: none;
+  box-shadow: var(--default-box-shadow);
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  padding: 0 20px;
   background-color: var(--secondary-color);
   color: var(--primary-color);
   align-items: center;
-  justify-content: space-between;
   min-height: 110px;
   width: 80vw;
   padding: 20px;
@@ -16,6 +20,7 @@ const Container = styled.div`
   img {
     width: 40px;
     margin-left: 10px;
+    justify-self: center;
   }
 `;
 
