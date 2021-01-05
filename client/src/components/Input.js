@@ -9,10 +9,7 @@ const Input = styled.input`
   color: var(--primary-color);
   justify-content: space-around;
   margin: 8px 0;
-
-  ::placeholder {
-    color: var(--primary-color);
-  }
+  outline: none;
 `;
 
 export const InputField = ({ title, value, onChange }) => {

@@ -4,12 +4,7 @@ import Header from "../components/Header";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getAllResults } from "../api/search";
-import { InputField } from "../components/Input";
-import styled from "styled-components/macro";
-
-const Navlink = styled(Link)`
-  max-width: 80%;
-`;
+import { Searchfield } from "../components/Searchfield";
 
 export default function Search() {
   const [results, setResults] = useState([]);
@@ -26,7 +21,7 @@ export default function Search() {
   return (
     <>
       <Header>Suche</Header>
-      <InputField
+      <Searchfield
         value={searchFilter}
         title="Was möchtest du recyceln?"
         onChange={(event) => setSearchFilter(event.target.value.toLowerCase())}
@@ -35,16 +30,13 @@ export default function Search() {
       {results
         .filter((result) => result.title.toLowerCase().includes(searchFilter))
         .map((filteredResult) => (
-          <Navlink
-            key={filteredResult._id}
-            to={`/search/${filteredResult.title}`}
-          >
+          <Link key={filteredResult._id} to={`/search/${filteredResult.title}`}>
             <List
               item={filteredResult.title.replaceAll(/\s/g, " / ")}
               icon={IconArrowForward}
               alt="Icon Arrow Forward"
             />
-          </Navlink>
+          </Link>
         ))}
     </>
   );

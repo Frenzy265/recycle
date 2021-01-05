@@ -14,10 +14,7 @@ const Input = styled.input`
   background-color: var(--action-color);
   color: var(--primary-color);
   border: none;
-
-  ::placeholder {
-    color: var(--primary-color);
-  }
+  outline: none;
 `;
 
 const ButtonIcon = styled.button`
