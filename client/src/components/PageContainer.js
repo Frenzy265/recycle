@@ -1,6 +1,6 @@
 import styled from "styled-components/macro";
 
-const PageContainer = styled.main`
+const PageContainer = styled.div`
   display: grid;
   grid-gap: 0.5rem;
   place-items: center;
