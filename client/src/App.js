@@ -48,9 +48,8 @@ function App() {
               <SearchResult />
             </Route>
           </Switch>
-
-          {!page && <Navbar />}
         </PageContainer>
+        {!page && <Navbar />}
       </Router>
     </>
   );
