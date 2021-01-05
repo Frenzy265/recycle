@@ -64,6 +64,10 @@ h2 {
     font-weight: bold;
 }
 
+::placeholder {
+    color: var(--secondary-color);
+    font-size: 1rem;
+}
 `;
 
 export const BasicStyle = css`

@@ -10,11 +10,6 @@ const Input = styled.input`
   justify-content: space-around;
   margin: 8px 0;
   outline: none;
-
-  ::placeholder {
-    color: var(--secondary-color);
-    font-size: 0.8rem;
-  }
 `;
 
 export const InputField = ({ title, value, onChange }) => {

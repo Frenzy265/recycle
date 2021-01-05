@@ -15,11 +15,6 @@ const Input = styled.input`
   color: var(--primary-color);
   border: none;
   outline: none;
-
-  ::placeholder {
-    color: var(--secondary-color);
-    font-size: 0.8rem;
-  }
 `;
 
 const ButtonIcon = styled.button`
