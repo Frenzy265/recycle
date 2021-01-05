@@ -11,7 +11,8 @@ const Input = styled.input`
   margin: 8px 0;
 
   ::placeholder {
-    color: var(--primary-color);
+    color: var(--secondary-color);
+    font-size: 0.8rem;
   }
 `;
 
