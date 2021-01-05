@@ -12,7 +12,7 @@ export default function Challenge() {
       setTasks(allTasks);
     }
     fetchData();
-  }, []);
+  }, [tasks]);
 
   const handleClickStatus = async (task) => {
     await updateStatusTask(task);
