@@ -74,8 +74,6 @@ CardDefault.propTypes = {
 };
 
 CardProgress.propTypes = {
-  icon: PropTypes.any,
-  alt: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   infoOne: PropTypes.string.isRequired,
   infoTwo: PropTypes.string,
