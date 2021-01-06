@@ -5,14 +5,15 @@ import PropTypes from "prop-types";
 
 const Container = styled.div`
   position: relative;
-  width: 75px;
-  height: 75px;
+  justify-self: center;
+  width: 70px;
+  height: 70px;
 `;
 
 const CircleSvg = styled.svg`
   position: relative;
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
 `;
 
 const CircleBack = styled.circle`
@@ -28,8 +29,8 @@ const CircleFront = styled.circle`
 const Image = styled.img`
   height: 30px;
   position: absolute;
-  top: 25px;
-  left: 20px;
+  top: 20px;
+  left: 15px;
 `;
 
 const Progressbar = ({ progress }) => {
@@ -37,7 +38,7 @@ const Progressbar = ({ progress }) => {
   const circleRef = useRef(null);
 
   //   const progress = 75;
-  const size = 80;
+  const size = 70;
   const strokeWidth = 8;
 
   const center = size / 2;
