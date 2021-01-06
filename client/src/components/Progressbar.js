@@ -1,16 +1,18 @@
 import React, { useEffect, useState, useRef } from "react";
 import styled from "styled-components/macro";
-import PropTypes from "prop-types";
 import IconTrophy from "../assets/icon-trophy-action.svg";
+import PropTypes from "prop-types";
 
 const Container = styled.div`
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 75px;
+  height: 75px;
 `;
 
 const CircleSvg = styled.svg`
   position: relative;
+  width: 80px;
+  height: 80px;
 `;
 
 const CircleBack = styled.circle`
@@ -24,15 +26,19 @@ const CircleFront = styled.circle`
 `;
 
 const Image = styled.img`
-  height: 40px;
+  height: 30px;
   position: absolute;
-  top: 30px;
-  left: 30px;
+  top: 25px;
+  left: 20px;
 `;
 
-const Progressbar = ({ size, progress, strokeWidth }) => {
+const Progressbar = ({ progress }) => {
   const [offset, setOffset] = useState(0);
   const circleRef = useRef(null);
+
+  //   const progress = 75;
+  const size = 80;
+  const strokeWidth = 8;
 
   const center = size / 2;
   const radius = size / 2 - strokeWidth / 2;
@@ -73,7 +79,5 @@ const Progressbar = ({ size, progress, strokeWidth }) => {
 export default Progressbar;
 
 Progressbar.propTypes = {
-  size: PropTypes.number,
-  progress: PropTypes.number,
-  strokeWidth: PropTypes.number,
+  progress: PropTypes.number.isRequired,
 };
