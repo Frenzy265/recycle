@@ -1,5 +1,6 @@
 import styled from "styled-components/macro";
 import PropTypes from "prop-types";
+import Progressbar from "./Progressbar";
 
 const Container = styled.div`
   align-items: center;
@@ -19,12 +20,13 @@ const Container = styled.div`
 
   img {
     width: 40px;
-    margin-left: 10px;
     justify-self: center;
   }
 `;
 
 const Textbox = styled.div`
+  margin-right: 10px;
+
   p {
     margin: 0px;
   }
@@ -35,7 +37,7 @@ const Textbox = styled.div`
   }
 `;
 
-export const Card = ({ title, infoOne, infoTwo, icon, alt }) => {
+export const CardDefault = ({ title, infoOne, infoTwo, icon, alt }) => {
   return (
     <>
       <Container>
@@ -50,10 +52,32 @@ export const Card = ({ title, infoOne, infoTwo, icon, alt }) => {
   );
 };
 
-Card.propTypes = {
+export const CardProgress = ({ title, infoOne, infoTwo, progress }) => {
+  return (
+    <Container>
+      <Textbox>
+        <h2>{title}</h2>
+        <p>{infoOne}</p>
+        <p>{infoTwo}</p>
+      </Textbox>
+      <Progressbar progress={progress} />
+    </Container>
+  );
+};
+
+CardDefault.propTypes = {
   icon: PropTypes.any,
   alt: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   infoOne: PropTypes.string.isRequired,
   infoTwo: PropTypes.string,
+};
+
+CardProgress.propTypes = {
+  icon: PropTypes.any,
+  alt: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  infoOne: PropTypes.string.isRequired,
+  infoTwo: PropTypes.string,
+  progress: PropTypes.number.isRequired,
 };
