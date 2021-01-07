@@ -38,7 +38,7 @@ export default function BoxExist() {
     return () => {
       mounted = false;
     };
-  }, [title, newItem, box.items]);
+  }, [title, newItem]);
 
   const handleDeleteItem = async (item) => {
     console.log(item);
