@@ -23,19 +23,20 @@ const Input = styled.input`
   color: var(--primary-color);
   border: none;
   outline: none;
+  margin-left: 6px;
 `;
 
 export const Searchfield = ({ title, value, onChange }) => {
   return (
     <Container>
+      <img src={IconFilter} alt="Icon Filter" />
       <Input
         value={value}
         onChange={onChange}
-        type="text"
+        type="search"
         placeholder={title}
-        size="29"
+        size="28"
       />
-      <img src={IconFilter} alt="Icon Filter" />
     </Container>
   );
 };
