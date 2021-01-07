@@ -18,12 +18,12 @@ const CircleSvg = styled.svg`
 
 const CircleBack = styled.circle`
   fill: none;
-  stroke: #fff;
+  stroke: var(--action-color);
 `;
 
 const CircleFront = styled.circle`
   fill: none;
-  stroke: var(--action-color);
+  stroke: #fff;
 `;
 
 const Image = styled.img`
@@ -47,7 +47,7 @@ const Progressbar = ({ progress }) => {
 
   useEffect(() => {
     const progressOffset = ((100 - progress) / 100) * circumference;
-    setOffset(progressOffset);
+    setOffset(-progressOffset);
     circleRef.current.style =
       "transition: stroke-dashoffset 1000ms ease-in-out;";
   }, [setOffset, circumference, progress, offset]);
