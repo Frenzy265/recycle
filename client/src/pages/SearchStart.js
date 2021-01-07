@@ -11,11 +11,18 @@ export default function Search() {
   const [searchFilter, setSearchFilter] = useState("");
 
   useEffect(() => {
+    let mounted = true;
+
     async function fetchData() {
       const newResults = await getAllResults();
-      setResults(newResults);
+      if (mounted) {
+        setResults(newResults);
+      }
     }
     fetchData();
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   return (

@@ -8,8 +8,9 @@ const Container = styled.div`
   ${BasicSize};
   background-color: var(--action-color);
   color: var(--primary-color);
-  justify-content: space-around;
-  margin: 8px 0;
+  justify-content: space-between;
+  max-width: 300px;
+  margin: 0.1rem 0;
 
   img {
     height: 20px;
@@ -22,19 +23,20 @@ const Input = styled.input`
   color: var(--primary-color);
   border: none;
   outline: none;
+  margin-left: 6px;
 `;
 
 export const Searchfield = ({ title, value, onChange }) => {
   return (
     <Container>
+      <img src={IconFilter} alt="Icon Filter" />
       <Input
         value={value}
         onChange={onChange}
-        type="text"
+        type="search"
         placeholder={title}
-        size="29"
+        size="28"
       />
-      <img src={IconFilter} alt="Icon Filter" />
     </Container>
   );
 };

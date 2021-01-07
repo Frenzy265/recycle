@@ -11,11 +11,18 @@ export default function SearchResult() {
   const { title } = useParams();
 
   useEffect(() => {
+    let mounted = true;
+
     async function fetchData() {
       const newResult = await getResult(title);
-      setResult(newResult);
+      if (mounted) {
+        setResult(newResult);
+      }
     }
     fetchData();
+    return () => {
+      mounted = false;
+    };
   }, [title]);
 
   return (
