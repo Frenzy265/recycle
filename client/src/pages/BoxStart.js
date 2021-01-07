@@ -17,11 +17,18 @@ export default function BoxStart() {
   const [boxes, setBoxes] = useState([]);
 
   useEffect(() => {
+    let mounted = true;
+
     async function fetchData() {
       const newBoxes = await getBoxes();
-      setBoxes(newBoxes);
+      if (mounted) {
+        setBoxes(newBoxes);
+      }
     }
     fetchData();
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   return (

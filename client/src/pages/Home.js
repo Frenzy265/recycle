@@ -11,12 +11,20 @@ export default function Home() {
   const [amountTasks, setAmountTasks] = useState({ done: 0, all: 0 });
 
   useEffect(() => {
+    let mounted = true;
+
     async function fetchData() {
       const result = await countTasks();
-      setAmountTasks(result);
+      if (mounted) {
+        setAmountTasks(result);
+      }
     }
     fetchData();
-  }, [amountTasks]);
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   const progress = (amountTasks.done * 100) / amountTasks.all;
 

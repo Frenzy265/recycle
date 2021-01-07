@@ -24,14 +24,20 @@ export default function BoxExist() {
   const [newItem, setNewItem] = useState("");
   const { title } = useParams();
   const history = useHistory();
-  // const [delItem, setDelItem] = useState(null);
 
   useEffect(() => {
+    let mounted = true;
+
     async function fetchData() {
       const boxDetails = await getBoxByTitle(title);
-      setBox(boxDetails);
+      if (mounted) {
+        setBox(boxDetails);
+      }
     }
     fetchData();
+    return () => {
+      mounted = false;
+    };
   }, [title, newItem, box.items]);
 
   const handleDeleteItem = async (item) => {

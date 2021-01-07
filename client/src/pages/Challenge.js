@@ -7,11 +7,18 @@ export default function Challenge() {
   const [tasks, setTasks] = useState();
 
   useEffect(() => {
+    let mounted = true;
+
     async function fetchData() {
       const allTasks = await getAllTasks();
-      setTasks(allTasks);
+      if (mounted) {
+        setTasks(allTasks);
+      }
     }
     fetchData();
+    return () => {
+      mounted = false;
+    };
   }, [tasks]);
 
   const handleClickStatus = async (task) => {
