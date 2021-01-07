@@ -8,8 +8,9 @@ const Container = styled.div`
   ${BasicSize};
   background-color: var(--action-color);
   color: var(--primary-color);
-  justify-content: space-around;
-  margin: 8px 0;
+  justify-content: space-between;
+  max-width: 300px;
+  margin: 0.1rem 0;
 
   img {
     height: 20px;
