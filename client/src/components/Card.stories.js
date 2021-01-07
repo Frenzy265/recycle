@@ -1,15 +1,15 @@
 import React from "react";
-import { Card } from "./Card";
+import { CardDefault } from "./Card";
 import IconRecycle from "../assets/icon-recycle-action.svg";
 import IconBox from "../assets/icon-box-action.svg";
 
 export default {
-  title: "Components/Card",
+  title: "Components/CardDefault",
   parameters: { layout: "centered" },
-  component: Card,
+  component: CardDefault,
 };
 
-const Template = (args) => <Card {...args} />;
+const Template = (args) => <CardDefault {...args} />;
 
 export const Introduction = Template.bind({});
 Introduction.args = {
