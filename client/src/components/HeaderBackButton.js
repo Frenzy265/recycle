@@ -43,5 +43,5 @@ export const HeaderBackButton = ({ headline }) => {
 };
 
 HeaderBackButton.propTypes = {
-  headline: PropTypes.string.isRequired,
+  headline: PropTypes.string,
 };
