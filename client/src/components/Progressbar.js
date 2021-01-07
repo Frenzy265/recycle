@@ -46,7 +46,7 @@ const Progressbar = ({ progress }) => {
   const circumference = Math.round(2 * Math.PI * radius);
 
   useEffect(() => {
-    const progressOffset = ((100 - progress) / 100) * circumference;
+    const progressOffset = Math.round(((100 - progress) / 100) * circumference);
     setOffset(progressOffset);
     circleRef.current.style =
       "transition: stroke-dashoffset 1000ms ease-in-out;";
