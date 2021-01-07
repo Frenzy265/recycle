@@ -26,7 +26,7 @@ export default function Home() {
     };
   }, []);
 
-  const progress = (amountTasks.done * 100) / amountTasks.all;
+  const progress = Math.round(amountTasks.done * 100) / amountTasks.all;
 
   return (
     <>
