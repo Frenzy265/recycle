@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import Progressbar from "./Progressbar";
 import IconTrophy from "../assets/icon-trophy-primary.svg";
 import IconHook from "../assets/icon-hook-primary.svg";
+import { updateStatusTask } from "../api/challenge";
+import { useState } from "react";
 
 const Container = styled.div`
   align-items: center;
@@ -85,15 +87,22 @@ export const CardProgress = ({ title, infoOne, infoTwo, progress }) => {
   );
 };
 
-export const CardChallenge = ({ title, done, task, onClick }) => {
+export const CardChallenge = ({ title, done, description }) => {
+  const [doneStatus, setDoneStatus] = useState(done);
+
+  const handleClickStatus = async () => {
+    setDoneStatus(!doneStatus);
+    await updateStatusTask(doneStatus, title);
+  };
+
   return (
-    <Container done={done}>
+    <Container done={doneStatus}>
       <Textbox>
         <h2>{title}</h2>
-        <p>{task}</p>
+        <p>{description}</p>
       </Textbox>
-      <Button onClick={onClick} done={done}>
-        {done ? (
+      <Button onClick={handleClickStatus} done={doneStatus}>
+        {doneStatus ? (
           <img src={IconTrophy} alt="Icon Trophy" />
         ) : (
           <img src={IconHook} alt="Icon hook" />
@@ -120,7 +129,6 @@ CardProgress.propTypes = {
 
 CardChallenge.propTypes = {
   title: PropTypes.string.isRequired,
-  task: PropTypes.string.isRequired,
-  done: PropTypes.bool,
-  onClick: PropTypes.func,
+  description: PropTypes.string.isRequired,
+  done: PropTypes.bool.isRequired,
 };
