@@ -1,10 +1,11 @@
 import styled from "styled-components/macro";
 import PropTypes from "prop-types";
-import { BasicStyle, BasicSize } from "../globalstyle";
+import { BasicStyle } from "../globalstyle";
 
 const Form = styled.form`
   ${BasicStyle};
-  ${BasicSize};
+  width: ${(props) => (props.regular ? "300px" : "145px")};
+  height: 50px;
   background-color: var(--action-color);
   color: var(--primary-color);
   justify-content: space-around;
@@ -29,10 +30,18 @@ const ButtonIcon = styled.button`
   }
 `;
 
-export const FormInput = ({ value, title, icon, alt, onSubmit, onChange }) => {
+export const FormInput = ({
+  value,
+  title,
+  icon,
+  alt,
+  onSubmit,
+  onChange,
+  regular,
+}) => {
   return (
-    <Form onSubmit={onSubmit}>
-      <Input value={value} onChange={onChange} placeholder={title} size="29" />
+    <Form regular={regular} onSubmit={onSubmit}>
+      <Input value={value} onChange={onChange} placeholder={title} size="10" />
       <ButtonIcon type="submit">
         <img src={icon} alt={alt} />
       </ButtonIcon>
@@ -47,4 +56,5 @@ FormInput.propTypes = {
   alt: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
+  regular: PropTypes.bool,
 };
