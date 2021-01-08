@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAllTasks, updateStatusTask } from "../api/challenge";
+import { getAllTasks } from "../api/challenge";
 import { CardChallenge } from "../components/Card";
 import Header from "../components/Header";
 
@@ -21,10 +21,6 @@ export default function Challenge() {
     };
   }, []);
 
-  const handleClickStatus = async (task) => {
-    await updateStatusTask(task);
-  };
-
   return (
     <>
       <Header>Challenge</Header>
@@ -32,8 +28,8 @@ export default function Challenge() {
         <CardChallenge
           key={task._id}
           done={task.done}
-          task={task.task}
-          onClick={() => handleClickStatus(task)}
+          title={task.title}
+          description={task.description}
         ></CardChallenge>
       ))}
     </>
