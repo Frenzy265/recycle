@@ -33,7 +33,7 @@ export default function AddNewBox() {
         value={item}
         onChange={(event) => setItem(event.target.value)}
       />
-      <Button type="submit" value="AddNewBox">
+      <Button regular type="submit" value="AddNewBox">
         <p>Erstelle eine neue Box</p>
         <img src={IconBox} alt="Icon Box" />
       </Button>

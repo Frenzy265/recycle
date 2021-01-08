@@ -19,6 +19,12 @@ const ListContainer = styled.ul`
   margin-block-end: 0;
 `;
 
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+`;
+
 export default function BoxExist() {
   const [box, setBox] = useState({});
   const [newItem, setNewItem] = useState("");
@@ -59,14 +65,6 @@ export default function BoxExist() {
   return (
     <>
       <HeaderBackButton headline={box.title}></HeaderBackButton>
-      <FormInput
-        onSubmit={handleSubmitItem}
-        title="Neuer Eintrag"
-        icon={IconAdd}
-        alt="Icon add"
-        value={newItem}
-        onChange={(event) => setNewItem(event.target.value)}
-      />
       <ListContainer>
         {box.items?.map((item) => (
           <List
@@ -78,10 +76,20 @@ export default function BoxExist() {
           />
         ))}
       </ListContainer>
-      <Button active onClick={handleDeleteBox}>
-        <p>Box schließen</p>
-        <img src={IconRecycle} alt="Icon recycle" />
-      </Button>
+      <ButtonContainer>
+        <FormInput
+          onSubmit={handleSubmitItem}
+          title="Hinzufügen"
+          icon={IconAdd}
+          alt="Icon add"
+          value={newItem}
+          onChange={(event) => setNewItem(event.target.value)}
+        />
+        <Button active onClick={handleDeleteBox}>
+          <p>Schließen</p>
+          <img src={IconRecycle} alt="Icon recycle" />
+        </Button>
+      </ButtonContainer>
     </>
   );
 }
