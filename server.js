@@ -171,11 +171,11 @@ app.get("/api/challenge/statistic", async (request, response) => {
   }
 });
 
-app.patch("/api/challenge/:id", async (request, response) => {
-  const { id } = request.params;
-  const newStatus = request.body;
+app.patch("/api/challenge/:title", async (request, response) => {
+  const { title } = request.params;
+  const { done } = request.body;
   try {
-    const updateResult = await changeTaskStatus(id, newStatus.done);
+    const updateResult = await changeTaskStatus(title, done);
     if (updateResult.modifiedCount === 0) {
       return response.status(404).send("Task not found");
     }
