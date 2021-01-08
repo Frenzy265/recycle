@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { getAllTasks, updateStatusTask } from "../api/challenge";
+import { getAllTasks } from "../api/challenge";
+import { CardChallenge } from "../components/Card";
 import Header from "../components/Header";
-import { Task } from "../components/Task";
 
 export default function Challenge() {
   const [tasks, setTasks] = useState();
@@ -19,23 +19,18 @@ export default function Challenge() {
     return () => {
       mounted = false;
     };
-  }, [tasks]);
-
-  const handleClickStatus = async (task) => {
-    await updateStatusTask(task);
-  };
+  }, []);
 
   return (
     <>
       <Header>Challenge</Header>
       {tasks?.map((task) => (
-        <Task
+        <CardChallenge
           key={task._id}
           done={task.done}
-          label={task.label}
-          task={task.task}
-          onClick={() => handleClickStatus(task)}
-        ></Task>
+          title={task.title}
+          description={task.description}
+        ></CardChallenge>
       ))}
     </>
   );

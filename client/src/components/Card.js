@@ -1,6 +1,10 @@
 import styled from "styled-components/macro";
 import PropTypes from "prop-types";
 import Progressbar from "./Progressbar";
+import IconTrophy from "../assets/icon-trophy-primary.svg";
+import IconHook from "../assets/icon-hook-primary.svg";
+import { updateStatusTask } from "../api/challenge";
+import { useState } from "react";
 
 const Container = styled.div`
   align-items: center;
@@ -8,7 +12,7 @@ const Container = styled.div`
   border: none;
   box-shadow: var(--default-box-shadow);
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 4fr 1fr;
   padding: 0 20px;
   background-color: var(--secondary-color);
   color: var(--primary-color);
@@ -34,6 +38,24 @@ const Textbox = styled.div`
   h2 {
     margin: 0;
     text-transform: uppercase;
+  }
+`;
+
+const Button = styled.button`
+  align-items: center;
+  border-radius: 50%;
+  border: none;
+  box-shadow: var(--default-box-shadow);
+  background-color: ${(props) =>
+    props.done ? "var(--action-color)" : "var(--tertiary-color)"};
+  color: var(--primary-color);
+  height: 50px;
+  width: 50px;
+  justify-self: center;
+  outline: none;
+
+  img {
+    height: 20px;
   }
 `;
 
@@ -65,6 +87,31 @@ export const CardProgress = ({ title, infoOne, infoTwo, progress }) => {
   );
 };
 
+export const CardChallenge = ({ title, done, description }) => {
+  const [doneStatus, setDoneStatus] = useState(done);
+
+  const handleClickStatus = async () => {
+    setDoneStatus(!doneStatus);
+    await updateStatusTask(doneStatus, title);
+  };
+
+  return (
+    <Container done={doneStatus}>
+      <Textbox>
+        <h2>{title}</h2>
+        <p>{description}</p>
+      </Textbox>
+      <Button onClick={handleClickStatus} done={doneStatus}>
+        {doneStatus ? (
+          <img src={IconTrophy} alt="Icon Trophy" />
+        ) : (
+          <img src={IconHook} alt="Icon hook" />
+        )}
+      </Button>
+    </Container>
+  );
+};
+
 CardDefault.propTypes = {
   icon: PropTypes.any,
   alt: PropTypes.string.isRequired,
@@ -78,4 +125,10 @@ CardProgress.propTypes = {
   infoOne: PropTypes.string.isRequired,
   infoTwo: PropTypes.string,
   progress: PropTypes.number.isRequired,
+};
+
+CardChallenge.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  done: PropTypes.bool.isRequired,
 };

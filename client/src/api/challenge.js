@@ -10,10 +10,10 @@ export async function countTasks() {
   return statistic;
 }
 
-export async function updateStatusTask(task) {
-  const response = await fetch(`/api/challenge/${task._id}`, {
+export async function updateStatusTask(done, title) {
+  const response = await fetch(`/api/challenge/${title}`, {
     method: "PATCH",
-    body: JSON.stringify(task),
+    body: JSON.stringify({ done }),
     headers: { "Content-Type": "application/json;charset=utf-8" },
   });
   const update = await response.json();
