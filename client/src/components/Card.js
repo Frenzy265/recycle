@@ -53,6 +53,7 @@ const Button = styled.button`
   width: 50px;
   justify-self: center;
   outline: none;
+  transition: all 0.3s;
 
   img {
     height: 20px;
