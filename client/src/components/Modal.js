@@ -7,13 +7,12 @@ import { useHistory } from "react-router-dom";
 
 const ModalContainer = styled.div`
   position: absolute;
-  left: 48.4%;
+  left: 48%;
   top: 50%;
   transform: translate(-50%, -50%);
   ${BasicStyle};
   flex-direction: column;
-  width: 300px;
-  height: 300px;
+  width: 320px;
   background-color: var(--tertiary-color);
   color: var(--primary-color);
   margin: 10px;
@@ -25,7 +24,9 @@ const ModalContainer = styled.div`
 
 const ButtonContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  margin-bottom: 16px;
+  width: 300px;
 
   button {
     ${BasicStyle};
@@ -34,7 +35,7 @@ const ButtonContainer = styled.div`
     font-size: 1rem;
     width: 120px;
     height: 40px;
-    text-align: center;
+    justify-content: center;
   }
 `;
 
@@ -49,7 +50,6 @@ export const Modal = ({ boxtitle, closeModal }) => {
   return (
     <>
       <ModalContainer>
-        <h2>Box schließen</h2>
         <p>
           Möchtest du die Box {boxtitle} wirklich schließen und alle darin
           enthaltenen Einträge löschen?
