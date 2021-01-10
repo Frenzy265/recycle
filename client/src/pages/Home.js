@@ -49,7 +49,7 @@ export default function Home() {
         <CardProgress
           progress={progress}
           title="Challenges"
-          infoOne="Es warten verschiedene Aufagben auf dich, die dir helfen, nachhaltiger zu leben und den drei Prinzipien nachzugehen."
+          infoOne="Es warten verschiedene Aufgaben auf dich, die dir helfen, nachhaltiger zu leben und den drei Prinzipien nachzugehen."
           infoTwo={`Gelöste Aufgaben: ${amountTasks?.done} / ${amountTasks?.all}`}
         />
       </Link>
@@ -59,7 +59,7 @@ export default function Home() {
           icon={IconBox}
           alt="Icon Box"
           infoOne="Erstelle dir verschiedene Boxen um Dinge zu sammeln, die du recyceln, verkaufen oder verschenken möchtest. Damit behältst du immer den Überblick!"
-          infoTwo="Offene Boxen: 3"
+          infoTwo="Offene Boxen: 2"
         />
       </Link>
     </>
