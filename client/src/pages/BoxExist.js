@@ -4,12 +4,13 @@ import { FormInput } from "../components/Form";
 import IconAdd from "../assets/icon-add-primary.svg";
 import Button from "../components/Button";
 import { useEffect, useState } from "react";
-import { deleteBoxByTitle, getBoxByTitle, addItemByTitle } from "../api/boxes";
-import { useHistory, useParams } from "react-router-dom";
+import { getBoxByTitle, addItemByTitle } from "../api/boxes";
+import { useParams } from "react-router-dom";
 import styled from "styled-components/macro";
 import IconMinus from "../assets/icon-minus-action.svg";
 import { deleteItemByName } from "../api/boxes";
 import { HeaderBackButton } from "../components/HeaderBackButton";
+import { Modal } from "../components/Modal";
 
 const ListContainer = styled.ul`
   display: flex;
@@ -28,8 +29,9 @@ const ButtonContainer = styled.div`
 export default function BoxExist() {
   const [box, setBox] = useState({});
   const [newItem, setNewItem] = useState("");
+  const [modalOpen, setModalOpen] = useState(false);
   const { title } = useParams();
-  const history = useHistory();
+  const [delItem, setDelItem] = useState(1);
 
   useEffect(() => {
     let mounted = true;
@@ -44,16 +46,11 @@ export default function BoxExist() {
     return () => {
       mounted = false;
     };
-  }, [title, newItem]);
+  }, [title, newItem, delItem]);
 
   const handleDeleteItem = async (item) => {
-    console.log(item);
     await deleteItemByName(box.title, item);
-  };
-
-  const handleDeleteBox = async () => {
-    await deleteBoxByTitle(box.title);
-    history.push("/box");
+    setDelItem(delItem + 1);
   };
 
   const handleSubmitItem = async (event) => {
@@ -61,6 +58,10 @@ export default function BoxExist() {
     await addItemByTitle(newItem, box.title);
     setNewItem("");
   };
+
+  function closeModal() {
+    setModalOpen(false);
+  }
 
   return (
     <>
@@ -85,11 +86,12 @@ export default function BoxExist() {
           value={newItem}
           onChange={(event) => setNewItem(event.target.value)}
         />
-        <Button active onClick={handleDeleteBox}>
+        <Button active onClick={() => setModalOpen(true)}>
           <p>Schließen</p>
           <img src={IconRecycle} alt="Icon recycle" />
         </Button>
       </ButtonContainer>
+      {modalOpen && <Modal boxtitle={box.title} closeModal={closeModal} />}
     </>
   );
 }
