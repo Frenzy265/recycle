@@ -58,8 +58,8 @@ export default function Home() {
           title="Sammelboxen"
           icon={IconBox}
           alt="Icon Box"
-          infoOne="Erstelle dir verschiedene Boxen um Dinge zu sammeln, die du recyceln, verkaufen oder verschenken möchtest. Damit behältst du immer den Überblick!"
-          infoTwo="Offene Boxen: 2"
+          infoOne="Erstelle dir verschiedene Boxen um überflüssige Dinge zu sammeln, die du recyceln, verkaufen oder verschenken möchtest. Damit behältst du immer den Überblick!"
+          // infoTwo="Offene Boxen: 2"
         />
       </Link>
     </>
