@@ -6,7 +6,7 @@ Webapplication for easy recycling. My capstone project at neue Fische Bootcamp 2
 
 As a vision to create a sustainable environment, it is necessary to improve our recycle performance. The app will help you to reuse, reduce and recycle stuff.
 
-**You can find the deployment here:** [Heroku](recycle-bar.herokuapp.com/)
+**You can find the deployment here:** [Heroku](https://recycle-bar.herokuapp.com/)
 
 ---
 
@@ -28,7 +28,7 @@ As a vision to create a sustainable environment, it is necessary to improve our 
 - **Boxes:** you can collect different stuff to sell, donate or recycle
 - **Challenges:** You get some tasks to live sustainable and reuse, reduce and recycle correctly.
 
-## Content
+### Content
 
 - Search content by cologen AWB Müll ABC
 - Splash Page content by "Der Bananensprayer" Thomas Baumgärtel
