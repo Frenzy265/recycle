@@ -55,8 +55,13 @@ export default function BoxExist() {
 
   const handleSubmitItem = async (event) => {
     event.preventDefault();
-    await addItemByTitle(newItem, box.title);
-    setNewItem("");
+
+    if (newItem === "") {
+      alert("Bitte fügen Sie einen Eintrag hinzu");
+    } else {
+      await addItemByTitle(newItem, box.title);
+      setNewItem("");
+    }
   };
 
   function closeModal() {
