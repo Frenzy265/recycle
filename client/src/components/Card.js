@@ -19,6 +19,7 @@ const Container = styled.div`
   align-items: center;
   min-height: 110px;
   width: 80vw;
+  max-width: 800px;
   padding: 20px;
   font-size: 14px;
 
@@ -53,6 +54,7 @@ const Button = styled.button`
   width: 50px;
   justify-self: center;
   outline: none;
+  transition: all 0.3s;
 
   img {
     height: 20px;
