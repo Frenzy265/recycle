@@ -18,6 +18,11 @@ const Input = styled.input`
   outline: none;
 `;
 
+Input.defaultProps = {
+  type: "text",
+  required: true,
+};
+
 const ButtonIcon = styled.button`
   background-color: var(--action-color);
   height: 20px;

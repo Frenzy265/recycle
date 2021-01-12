@@ -12,6 +12,11 @@ const Input = styled.input`
   outline: none;
 `;
 
+Input.defaultProps = {
+  type: "text",
+  required: true,
+};
+
 export const InputField = ({ title, value, onChange }) => {
   return (
     <Input
