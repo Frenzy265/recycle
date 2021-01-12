@@ -13,11 +13,18 @@ export default function AddNewBox() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await postBoxById({
-      title: title,
-      item: item,
-    });
-    history.push("/box");
+    if (title === "") {
+      alert("Ein Titel für die Box ist erforderlich");
+    }
+    if (item === "") {
+      alert("Ein Eintrag für die Box ist erforderlich");
+    } else {
+      await postBoxById({
+        title: title,
+        item: item,
+      });
+      history.push("/box");
+    }
   };
 
   return (
