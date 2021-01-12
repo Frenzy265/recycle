@@ -11,6 +11,7 @@ const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  max-width: 800px;
 `;
 
 export default function BoxStart() {
