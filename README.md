@@ -27,3 +27,9 @@ As a vision to create a sustainable environment, it is necessary to improve our 
 - **Searching:** you can search and filter for recycling stuff and get answers where to recycle correctly and additionale inforamtion about it
 - **Boxes:** you can collect different stuff to sell, donate or recycle
 - **Challenges:** You get some tasks to live sustainable and reuse, reduce and recycle correctly.
+
+## Content
+
+- Search content by cologen AWB Müll ABC
+- Splash Page content by "Der Bananensprayer" Thomas Baumgärtel
+- Challenges by Franziska Klaus
