@@ -19,6 +19,7 @@ const Container = styled.div`
   align-items: center;
   min-height: 110px;
   width: 80vw;
+  max-width: 800px;
   padding: 20px;
   font-size: 14px;
 
