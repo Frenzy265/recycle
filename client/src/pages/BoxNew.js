@@ -4,7 +4,7 @@ import { useState } from "react";
 import IconBox from "../assets/icon-box-primary.svg";
 import { postBoxById } from "../api/boxes";
 import { useHistory } from "react-router-dom";
-import Header from "../components/Header";
+import { HeaderBackButton } from "../components/HeaderBackButton";
 
 export default function AddNewBox() {
   const [title, setTitle] = useState("");
@@ -22,7 +22,7 @@ export default function AddNewBox() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Header>Eine neue Box</Header>
+      <HeaderBackButton headline={"Eine neue Box"}></HeaderBackButton>
       <InputField
         title="Geben Sie der Box einen Namen"
         value={title}
