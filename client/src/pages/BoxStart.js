@@ -3,9 +3,11 @@ import IconBoxOld from "../assets/icon-box-primary.svg";
 import IconBoxNew from "../assets/icon-box-new-primary.svg";
 import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
-import { getBoxes } from "../api/boxes";
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
+import Localbase from "localbase";
+
+let db = new Localbase("db");
 
 const Container = styled.div`
   display: flex;
@@ -21,12 +23,13 @@ export default function BoxStart() {
     let mounted = true;
 
     async function fetchData() {
-      const newBoxes = await getBoxes();
+      const newBoxes = await db.collection("boxes").get();
       if (mounted) {
         setBoxes(newBoxes);
       }
     }
     fetchData();
+
     return () => {
       mounted = false;
     };
@@ -43,8 +46,8 @@ export default function BoxStart() {
           </Box>
         </Link>
         {boxes?.map((box) => (
-          <Link key={box._id} to={`/box/${box.title}`}>
-            <Box key={box._id} existing>
+          <Link key={box.title} to={`/box/${box.title}`}>
+            <Box key={box.title} existing>
               <img src={IconBoxOld} alt="Icon Box" />
               <p>{box.title}</p>
             </Box>
