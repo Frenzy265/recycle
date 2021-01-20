@@ -18,7 +18,7 @@ export default function AddNewBox() {
 
     db.collection("boxes").add({
       title: title,
-      item: [item],
+      items: [item],
     });
 
     history.push("/box");
