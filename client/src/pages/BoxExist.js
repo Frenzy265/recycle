@@ -4,7 +4,6 @@ import { FormInput } from "../components/Form";
 import IconAdd from "../assets/icon-add-primary.svg";
 import Button from "../components/Button";
 import { useEffect, useState } from "react";
-import { addItemByTitle } from "../api/boxes";
 import { useParams } from "react-router-dom";
 import styled from "styled-components/macro";
 import IconMinus from "../assets/icon-minus-action.svg";
@@ -35,6 +34,7 @@ export default function BoxExist() {
   const [modalOpen, setModalOpen] = useState(false);
   const { title } = useParams();
   const [delItem, setDelItem] = useState(1);
+  const [allItems, setAllItems] = useState();
 
   useEffect(() => {
     let mounted = true;
@@ -44,7 +44,6 @@ export default function BoxExist() {
         .collection("boxes")
         .doc({ title: title })
         .get();
-      console.log(boxDetails);
 
       if (mounted) {
         setBox(boxDetails);
@@ -54,17 +53,22 @@ export default function BoxExist() {
     return () => {
       mounted = false;
     };
-  }, [title, newItem, delItem]);
+  }, [title, newItem, delItem, allItems]);
 
   const handleDeleteItem = async (item) => {
     await deleteItemByName(box.title, item);
     setDelItem(delItem + 1);
   };
 
-  const handleSubmitItem = async (event) => {
+  const handleSubmitItem = (event) => {
     event.preventDefault();
-
-    await addItemByTitle(newItem, box.title);
+    const allItems = box.items;
+    allItems.push(newItem);
+    setAllItems(allItems);
+    db.collection("boxes").doc({ title: title }).set({
+      title: title,
+      items: allItems,
+    });
     setNewItem("");
   };
 
