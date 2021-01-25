@@ -3,11 +3,7 @@ import PropTypes from "prop-types";
 import Progressbar from "./Progressbar";
 import IconTrophy from "../assets/icon-trophy-primary.svg";
 import IconHook from "../assets/icon-hook-primary.svg";
-import { updateStatusTask } from "../api/challenge";
 import { useEffect, useState } from "react";
-import Localbase from "localbase";
-
-let db = new Localbase("db");
 
 const Container = styled.div`
   align-items: center;
