@@ -4,7 +4,10 @@ import Progressbar from "./Progressbar";
 import IconTrophy from "../assets/icon-trophy-primary.svg";
 import IconHook from "../assets/icon-hook-primary.svg";
 import { updateStatusTask } from "../api/challenge";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Localbase from "localbase";
+
+let db = new Localbase("db");
 
 const Container = styled.div`
   align-items: center;
@@ -89,22 +92,25 @@ export const CardProgress = ({ title, infoOne, infoTwo, progress }) => {
   );
 };
 
-export const CardChallenge = ({ title, done, description }) => {
-  const [doneStatus, setDoneStatus] = useState(done);
+export const CardChallenge = ({ title, description }) => {
+  const [doneStatus, setDoneStatus] = useState(localStorage.getItem(title));
 
-  const handleClickStatus = async () => {
+  useEffect(() => {
+    localStorage.setItem(title, doneStatus);
+  }, [title, doneStatus]);
+
+  const togglStatus = () => {
     setDoneStatus(!doneStatus);
-    await updateStatusTask(doneStatus, title);
   };
 
   return (
-    <Container done={doneStatus}>
+    <Container done={JSON.parse(doneStatus)}>
       <Textbox>
         <h2>{title}</h2>
         <p>{description}</p>
       </Textbox>
-      <Button onClick={handleClickStatus} done={doneStatus}>
-        {doneStatus ? (
+      <Button onClick={togglStatus} done={JSON.parse(doneStatus)}>
+        {JSON.parse(doneStatus) ? (
           <img src={IconTrophy} alt="Icon Trophy" />
         ) : (
           <img src={IconHook} alt="Icon hook" />
