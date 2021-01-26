@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useQuery } from "react-query";
 import { TextBox } from "../components/TextBox";
 import IconRecycle from "../assets/icon-recycle-primary.svg";
 import IconLightBulb from "../assets/icon-lightbulb-action.svg";
@@ -7,27 +8,19 @@ import { useParams } from "react-router-dom";
 import { HeaderBackButton } from "../components/HeaderBackButton";
 
 export default function SearchResult() {
-  const [result, setResult] = useState();
   const { title } = useParams();
 
-  useEffect(() => {
-    let mounted = true;
+  const { data: result, status } = useQuery(["resultbynae", title], () =>
+    getResult(title)
+  );
 
-    async function fetchData() {
-      const newResult = await getResult(title);
-      if (mounted) {
-        setResult(newResult);
-      }
-    }
-    fetchData();
-    return () => {
-      mounted = false;
-    };
-  }, [title]);
+  console.log(result);
 
   return (
     <>
-      {result && (
+      {status === "loading" && <div>Loading...</div>}
+      {status === "error" && <div>Es ist ein Fehler aufgetreten</div>}
+      {status === "success" && result && (
         <>
           <HeaderBackButton
             headline={result.title.replaceAll(/\s/g, " / ")}
