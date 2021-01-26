@@ -1,12 +1,11 @@
 import styled from "styled-components/macro";
 
 const Box = styled.div`
-  width: 300px;
-  max-width: 80%;
+  max-width: 800px;
   background: none;
   color: var(--tertiary-color);
-  margin-top: 30px;
   text-align: center;
+  margin: 30px;
 `;
 
 export const EmptyBox = () => {
