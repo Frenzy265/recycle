@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { getBoxes } from "../api/boxes";
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
+import { EmptyBox } from "../components/EmptyBox";
 
 const Container = styled.div`
   display: flex;
@@ -42,14 +43,20 @@ export default function BoxStart() {
             <p>Neue Box</p>
           </Box>
         </Link>
-        {boxes?.map((box) => (
-          <Link key={box._id} to={`/box/${box.title}`}>
-            <Box key={box._id} existing>
-              <img src={IconBoxOld} alt="Icon Box" />
-              <p>{box.title}</p>
-            </Box>
-          </Link>
-        ))}
+        {boxes.length === 0 ? (
+          <EmptyBox />
+        ) : (
+          <>
+            {boxes.map((box) => (
+              <Link key={box._id} to={`/box/${box.title}`}>
+                <Box key={box._id} existing>
+                  <img src={IconBoxOld} alt="Icon Box" />
+                  <p>{box.title}</p>
+                </Box>
+              </Link>
+            ))}
+          </>
+        )}
       </Container>
     </>
   );
