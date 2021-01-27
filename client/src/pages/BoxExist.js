@@ -7,12 +7,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components/macro";
 import IconMinus from "../assets/icon-minus-action.svg";
-import { deleteItemByName } from "../api/boxes";
 import { HeaderBackButton } from "../components/HeaderBackButton";
 import { Modal } from "../components/Modal";
-import Localbase from "localbase";
-
-let db = new Localbase("db");
+import { getBoxByTitle, setItemByTitle } from "../indexedDB/boxes";
 
 const ListContainer = styled.ul`
   display: flex;
@@ -33,17 +30,12 @@ export default function BoxExist() {
   const [newItem, setNewItem] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
   const { title } = useParams();
-  const [delItem, setDelItem] = useState(1);
-  const [allItems, setAllItems] = useState();
 
   useEffect(() => {
     let mounted = true;
 
     async function fetchData() {
-      const boxDetails = await db
-        .collection("boxes")
-        .doc({ title: title })
-        .get();
+      const boxDetails = await getBoxByTitle(title);
 
       if (mounted) {
         setBox(boxDetails);
@@ -53,22 +45,20 @@ export default function BoxExist() {
     return () => {
       mounted = false;
     };
-  }, [title, newItem, delItem, allItems]);
+  }, [title, newItem]);
 
   const handleDeleteItem = async (item) => {
-    await deleteItemByName(box.title, item);
-    setDelItem(delItem + 1);
+    const deletedItem = box.items.indexOf(item);
+    const allItems = box.items;
+    allItems.splice(deletedItem, 1);
+    setItemByTitle(title, allItems);
   };
 
   const handleSubmitItem = (event) => {
     event.preventDefault();
     const allItems = box.items;
     allItems.push(newItem);
-    setAllItems(allItems);
-    db.collection("boxes").doc({ title: title }).set({
-      title: title,
-      items: allItems,
-    });
+    setItemByTitle(title, allItems);
     setNewItem("");
   };
 
