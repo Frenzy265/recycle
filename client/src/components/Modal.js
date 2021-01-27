@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components/macro";
 import PropTypes from "prop-types";
 import { BasicStyle } from "../globalstyle";
-import { deleteBoxByTitle } from "../api/boxes";
+import { deleteBoxByTitle } from "../indexedDB/boxes";
 import { useHistory } from "react-router-dom";
 
 const ModalContainer = styled.div`
@@ -42,8 +42,8 @@ const ButtonContainer = styled.div`
 export const Modal = ({ boxtitle, closeModal }) => {
   const history = useHistory();
 
-  const handleDeleteBox = async () => {
-    await deleteBoxByTitle(boxtitle);
+  const handleDeleteBox = () => {
+    deleteBoxByTitle(boxtitle);
     history.push("/box");
   };
 
