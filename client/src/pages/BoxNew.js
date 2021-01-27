@@ -4,9 +4,7 @@ import { useState } from "react";
 import IconBox from "../assets/icon-box-primary.svg";
 import { useHistory } from "react-router-dom";
 import { HeaderBackButton } from "../components/HeaderBackButton";
-import Localbase from "localbase";
-
-let db = new Localbase("db");
+import { addBox } from "../indexedDB/boxes";
 
 export default function AddNewBox() {
   const [title, setTitle] = useState("");
@@ -15,12 +13,7 @@ export default function AddNewBox() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    db.collection("boxes").add({
-      title: title,
-      items: [item],
-    });
-
+    addBox(title, item);
     history.push("/box");
   };
 
