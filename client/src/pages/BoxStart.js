@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Localbase from "localbase";
+import { EmptyBox } from "../components/EmptyBox";
 
 let db = new Localbase("db");
 
@@ -53,6 +54,20 @@ export default function BoxStart() {
             </Box>
           </Link>
         ))}
+        {boxes.length === 0 ? (
+          <EmptyBox />
+        ) : (
+          <>
+            {boxes.map((box) => (
+              <Link key={box._id} to={`/box/${box.title}`}>
+                <Box key={box._id} existing>
+                  <img src={IconBoxOld} alt="Icon Box" />
+                  <p>{box.title}</p>
+                </Box>
+              </Link>
+            ))}
+          </>
+        )}
       </Container>
     </>
   );
