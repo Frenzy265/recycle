@@ -1,4 +1,4 @@
-import { useQuery } from "react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import { List } from "../components/ListItem";
 import IconRecycle from "../assets/icon-recycle-primary.svg";
 import { FormInput } from "../components/Form";
@@ -30,34 +30,19 @@ const ButtonContainer = styled.div`
 export default function BoxExist() {
   const { title } = useParams();
   const [modalOpen, setModalOpen] = useState(false);
-
-  // const [box, setBox] = useState({});
   const [newItem, setNewItem] = useState("");
-  // const [delItem, setDelItem] = useState(1);
+  const queryClient = useQueryClient();
 
   const { data: box, status } = useQuery(["boxbytitle", title], () =>
     getBoxByTitle(title)
   );
 
-  // useEffect(() => {
-  //   let mounted = true;
-
-  //   async function fetchData() {
-  //     const boxDetails = await getBoxByTitle(title);
-  //     if (mounted) {
-  //       setBox(boxDetails);
-  //     }
-  //   }
-  //   fetchData();
-  //   return () => {
-  //     mounted = false;
-  //   };
-  // }, [title, newItem, delItem]);
-
-  const handleDeleteItem = async (item) => {
-    await deleteItemByName(box.title, item);
-    // setDelItem(delItem + 1);
-  };
+  const deleteMutation = useMutation(
+    (item) => deleteItemByName(box.title, item),
+    {
+      onSuccess: () => queryClient.invalidateQueries("boxbytitle"),
+    }
+  );
 
   const handleSubmitItem = async (event) => {
     event.preventDefault();
@@ -89,7 +74,7 @@ export default function BoxExist() {
                 item={item}
                 icon={IconMinus}
                 alt={"Icon Delete"}
-                onClick={() => handleDeleteItem(item)}
+                onClick={() => deleteMutation.mutate(item)}
               />
             ))}
           </ListContainer>
