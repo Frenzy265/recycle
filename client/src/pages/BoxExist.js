@@ -39,20 +39,17 @@ export default function BoxExist() {
 
   const deleteMutation = useMutation(
     (item) => deleteItemByName(box.title, item),
-    {
-      onSuccess: () => queryClient.invalidateQueries("boxbytitle"),
-    }
+    { onSuccess: () => queryClient.invalidateQueries("boxbytitle") }
   );
 
-  const handleSubmitItem = async (event) => {
-    event.preventDefault();
+  const addMutation = useMutation(() => addItemByTitle(newItem, box.title), {
+    onSuccess: () => queryClient.invalidateQueries("boxbytitle"),
+  });
 
-    if (newItem === "") {
-      alert("Bitte fügen Sie einen Eintrag hinzu");
-    } else {
-      await addItemByTitle(newItem, box.title);
-      setNewItem("");
-    }
+  const createItem = (event) => {
+    event.preventDefault();
+    addMutation.mutate(newItem, box.title);
+    setNewItem("");
   };
 
   function closeModal() {
@@ -80,7 +77,8 @@ export default function BoxExist() {
           </ListContainer>
           <ButtonContainer>
             <FormInput
-              onSubmit={handleSubmitItem}
+              onSubmit={createItem}
+              type="text"
               title="Hinzufügen"
               icon={IconAdd}
               alt="Icon add"
