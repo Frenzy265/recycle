@@ -26,7 +26,22 @@ export default function Home() {
     };
   }, []);
 
-  const progress = Math.round(amountTasks.done * 100) / amountTasks.all;
+  function allStorage() {
+    let values = [],
+      keys = Object.keys(localStorage),
+      i = keys.length;
+
+    while (i--) {
+      values.push(localStorage.getItem(keys[i]));
+    }
+    return values;
+  }
+
+  const values = allStorage();
+  const resultTrue = values.filter((value) => value.includes(true));
+  const doneTask = resultTrue.length;
+
+  const progress = Math.round(doneTask * 100) / amountTasks.all;
 
   return (
     <>
@@ -50,7 +65,7 @@ export default function Home() {
           progress={progress}
           title="Challenges"
           infoOne="Es warten verschiedene Aufgaben auf dich, die dir helfen, nachhaltiger zu leben und den drei Prinzipien nachzugehen."
-          infoTwo={`Gelöste Aufgaben: ${amountTasks?.done} / ${amountTasks?.all}`}
+          infoTwo={`Gelöste Aufgaben: ${doneTask} / ${amountTasks?.all}`}
         />
       </Link>
       <Link to="/box">
