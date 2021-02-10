@@ -24,17 +24,17 @@ export default function AddNewBox() {
     <form onSubmit={handleSubmit}>
       <HeaderBackButton headline={"Eine neue Box"}></HeaderBackButton>
       <InputField
-        title="Geben Sie der Box einen Namen"
+        title="Name der Box"
         value={title}
         onChange={(event) => setTitle(event.target.value)}
       />
       <InputField
-        title="Neuer Eintrag"
+        title="Erster Eintrag"
         value={item}
         onChange={(event) => setItem(event.target.value)}
       />
       <Button regular type="submit" value="AddNewBox">
-        <p>Erstelle eine neue Box</p>
+        <p>Neue Box erstellen</p>
         <img src={IconBox} alt="Icon Box" />
       </Button>
     </form>
