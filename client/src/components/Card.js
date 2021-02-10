@@ -89,7 +89,9 @@ export const CardProgress = ({ title, infoOne, infoTwo, progress }) => {
 };
 
 export const CardChallenge = ({ title, description }) => {
-  const [doneStatus, setDoneStatus] = useState(localStorage.getItem(title));
+  const [doneStatus, setDoneStatus] = useState(
+    JSON.parse(localStorage.getItem(title))
+  );
 
   const togglStatus = () => {
     localStorage.setItem(title, !doneStatus);
