@@ -1,10 +1,11 @@
+import { useQuery } from "react-query";
 import Box from "../components/Box";
 import IconBoxOld from "../assets/icon-box-primary.svg";
 import IconBoxNew from "../assets/icon-box-new-primary.svg";
 import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
 import { getBoxes } from "../api/boxes";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import { EmptyBox } from "../components/EmptyBox";
 
@@ -16,22 +17,7 @@ const Container = styled.div`
 `;
 
 export default function BoxStart() {
-  const [boxes, setBoxes] = useState([]);
-
-  useEffect(() => {
-    let mounted = true;
-
-    async function fetchData() {
-      const newBoxes = await getBoxes();
-      if (mounted) {
-        setBoxes(newBoxes);
-      }
-    }
-    fetchData();
-    return () => {
-      mounted = false;
-    };
-  }, []);
+  const { data: boxes, status } = useQuery("allboxes", getBoxes);
 
   return (
     <>
@@ -43,20 +29,20 @@ export default function BoxStart() {
             <p>Neue Box</p>
           </Box>
         </Link>
-        {boxes.length === 0 ? (
-          <EmptyBox />
-        ) : (
-          <>
-            {boxes.map((box) => (
-              <Link key={box._id} to={`/box/${box.title}`}>
-                <Box key={box._id} existing>
-                  <img src={IconBoxOld} alt="Icon Box" />
-                  <p>{box.title}</p>
-                </Box>
-              </Link>
-            ))}
-          </>
-        )}
+
+        {status === "loading" && <div>Loading...</div>}
+        {status === "error" && <div>Es ist ein Fehler aufgetreten</div>}
+        {status === "success" && boxes.length === 0 && <EmptyBox />}
+
+        {status === "success" &&
+          boxes.map((box) => (
+            <Link key={box._id} to={`/box/${box.title}`}>
+              <Box key={box._id} existing>
+                <img src={IconBoxOld} alt="Icon Box" />
+                <p>{box.title}</p>
+              </Box>
+            </Link>
+          ))}
       </Container>
     </>
   );

@@ -1,9 +1,10 @@
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import { List } from "../components/ListItem";
 import IconRecycle from "../assets/icon-recycle-primary.svg";
 import { FormInput } from "../components/Form";
 import IconAdd from "../assets/icon-add-primary.svg";
 import Button from "../components/Button";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { getBoxByTitle, addItemByTitle } from "../api/boxes";
 import { useParams } from "react-router-dom";
 import styled from "styled-components/macro";
@@ -27,41 +28,28 @@ const ButtonContainer = styled.div`
 `;
 
 export default function BoxExist() {
-  const [box, setBox] = useState({});
-  const [newItem, setNewItem] = useState("");
-  const [modalOpen, setModalOpen] = useState(false);
   const { title } = useParams();
-  const [delItem, setDelItem] = useState(1);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [newItem, setNewItem] = useState("");
+  const queryClient = useQueryClient();
 
-  useEffect(() => {
-    let mounted = true;
+  const { data: box, status } = useQuery(["boxbytitle", title], () =>
+    getBoxByTitle(title)
+  );
 
-    async function fetchData() {
-      const boxDetails = await getBoxByTitle(title);
-      if (mounted) {
-        setBox(boxDetails);
-      }
-    }
-    fetchData();
-    return () => {
-      mounted = false;
-    };
-  }, [title, newItem, delItem]);
+  const deleteMutation = useMutation(
+    (item) => deleteItemByName(box.title, item),
+    { onSuccess: () => queryClient.invalidateQueries("boxbytitle") }
+  );
 
-  const handleDeleteItem = async (item) => {
-    await deleteItemByName(box.title, item);
-    setDelItem(delItem + 1);
-  };
+  const addMutation = useMutation(() => addItemByTitle(newItem, box.title), {
+    onSuccess: () => queryClient.invalidateQueries("boxbytitle"),
+  });
 
-  const handleSubmitItem = async (event) => {
+  const createItem = (event) => {
     event.preventDefault();
-
-    if (newItem === "") {
-      alert("Bitte fügen Sie einen Eintrag hinzu");
-    } else {
-      await addItemByTitle(newItem, box.title);
-      setNewItem("");
-    }
+    addMutation.mutate(newItem, box.title);
+    setNewItem("");
   };
 
   function closeModal() {
@@ -70,33 +58,41 @@ export default function BoxExist() {
 
   return (
     <>
-      <HeaderBackButton headline={box.title}></HeaderBackButton>
-      <ListContainer>
-        {box.items?.map((item) => (
-          <List
-            key={item}
-            item={item}
-            icon={IconMinus}
-            alt={"Icon Delete"}
-            onClick={() => handleDeleteItem(item)}
-          />
-        ))}
-      </ListContainer>
-      <ButtonContainer>
-        <FormInput
-          onSubmit={handleSubmitItem}
-          title="Hinzufügen"
-          icon={IconAdd}
-          alt="Icon add"
-          value={newItem}
-          onChange={(event) => setNewItem(event.target.value)}
-        />
-        <Button active onClick={() => setModalOpen(true)}>
-          <p>Schließen</p>
-          <img src={IconRecycle} alt="Icon recycle" />
-        </Button>
-      </ButtonContainer>
-      {modalOpen && <Modal boxtitle={box.title} closeModal={closeModal} />}
+      {status === "loading" && <div>Loading...</div>}
+      {status === "error" && <div>Es ist ein Fehler aufgetreten</div>}
+      {status === "success" && (
+        <>
+          <HeaderBackButton headline={box.title}></HeaderBackButton>
+
+          <ListContainer>
+            {box.items?.map((item) => (
+              <List
+                key={item}
+                item={item}
+                icon={IconMinus}
+                alt={"Icon Delete"}
+                onClick={() => deleteMutation.mutate(item)}
+              />
+            ))}
+          </ListContainer>
+          <ButtonContainer>
+            <FormInput
+              onSubmit={createItem}
+              type="text"
+              title="Hinzufügen"
+              icon={IconAdd}
+              alt="Icon add"
+              value={newItem}
+              onChange={(event) => setNewItem(event.target.value)}
+            />
+            <Button active onClick={() => setModalOpen(true)}>
+              <p>Schließen</p>
+              <img src={IconRecycle} alt="Icon recycle" />
+            </Button>
+          </ButtonContainer>
+          {modalOpen && <Modal boxtitle={box.title} closeModal={closeModal} />}
+        </>
+      )}
     </>
   );
 }
