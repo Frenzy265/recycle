@@ -4,10 +4,9 @@ import IconBoxOld from "../assets/icon-box-primary.svg";
 import IconBoxNew from "../assets/icon-box-new-primary.svg";
 import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
-import { getBoxes } from "../api/boxes";
-// import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import { EmptyBox } from "../components/EmptyBox";
+import { getBoxes } from "../indexeddb";
 
 const Container = styled.div`
   display: flex;
@@ -36,8 +35,8 @@ export default function BoxStart() {
 
         {status === "success" &&
           boxes.map((box) => (
-            <Link key={box._id} to={`/box/${box.title}`}>
-              <Box key={box._id} existing>
+            <Link key={box.title} to={`/box/${box.title}`}>
+              <Box key={box.title} existing>
                 <img src={IconBoxOld} alt="Icon Box" />
                 <p>{box.title}</p>
               </Box>
