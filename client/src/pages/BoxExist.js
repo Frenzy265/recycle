@@ -5,14 +5,13 @@ import { FormInput } from "../components/Form";
 import IconAdd from "../assets/icon-add-primary.svg";
 import Button from "../components/Button";
 import { useState } from "react";
-import { addItemByTitle } from "../api/boxes";
 import { useParams } from "react-router-dom";
 import styled from "styled-components/macro";
 import IconMinus from "../assets/icon-minus-action.svg";
 import { deleteItemByName } from "../api/boxes";
 import { HeaderBackButton } from "../components/HeaderBackButton";
 import { Modal } from "../components/Modal";
-import { getBoxByTitle } from "../indexeddb";
+import { getBoxByTitle, setItemByTitle } from "../indexeddb";
 
 const ListContainer = styled.ul`
   display: flex;
@@ -43,13 +42,18 @@ export default function BoxExist() {
     { onSuccess: () => queryClient.invalidateQueries("boxbytitle") }
   );
 
-  const addMutation = useMutation(() => addItemByTitle(newItem, box.title), {
-    onSuccess: () => queryClient.invalidateQueries("boxbytitle"),
-  });
+  const addMutation = useMutation(
+    (allItems) => setItemByTitle(title, allItems),
+    {
+      onSuccess: () => queryClient.invalidateQueries("boxbytitle"),
+    }
+  );
 
   const createItem = (event) => {
     event.preventDefault();
-    addMutation.mutate(newItem, box.title);
+    const allItems = box.items;
+    allItems.push(newItem);
+    addMutation.mutate(allItems);
     setNewItem("");
   };
 
