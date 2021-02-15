@@ -5,13 +5,12 @@ import { FormInput } from "../components/Form";
 import IconAdd from "../assets/icon-add-primary.svg";
 import Button from "../components/Button";
 import { useState } from "react";
-import { getBoxByTitle, addItemByTitle } from "../api/boxes";
 import { useParams } from "react-router-dom";
 import styled from "styled-components/macro";
 import IconMinus from "../assets/icon-minus-action.svg";
-import { deleteItemByName } from "../api/boxes";
 import { HeaderBackButton } from "../components/HeaderBackButton";
 import { Modal } from "../components/Modal";
+import { getBoxByTitle, setItemByTitle } from "../indexeddb";
 
 const ListContainer = styled.ul`
   display: flex;
@@ -37,18 +36,22 @@ export default function BoxExist() {
     getBoxByTitle(title)
   );
 
-  const deleteMutation = useMutation(
-    (item) => deleteItemByName(box.title, item),
-    { onSuccess: () => queryClient.invalidateQueries("boxbytitle") }
-  );
-
-  const addMutation = useMutation(() => addItemByTitle(newItem, box.title), {
+  const mutation = useMutation((allItems) => setItemByTitle(title, allItems), {
     onSuccess: () => queryClient.invalidateQueries("boxbytitle"),
   });
 
+  const deleteItem = (item) => {
+    const itemToDelete = box.items.indexOf(item);
+    const allItems = box.items;
+    allItems.splice(itemToDelete, 1);
+    mutation.mutate(allItems);
+  };
+
   const createItem = (event) => {
     event.preventDefault();
-    addMutation.mutate(newItem, box.title);
+    const allItems = box.items;
+    allItems.push(newItem);
+    mutation.mutate(allItems);
     setNewItem("");
   };
 
@@ -71,7 +74,7 @@ export default function BoxExist() {
                 item={item}
                 icon={IconMinus}
                 alt={"Icon Delete"}
-                onClick={() => deleteMutation.mutate(item)}
+                onClick={() => deleteItem(item)}
               />
             ))}
           </ListContainer>

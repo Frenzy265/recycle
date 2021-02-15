@@ -2,9 +2,9 @@ import { InputField } from "../components/Input";
 import Button from "../components/Button";
 import { useState } from "react";
 import IconBox from "../assets/icon-box-primary.svg";
-import { postBoxById } from "../api/boxes";
 import { useHistory } from "react-router-dom";
 import { HeaderBackButton } from "../components/HeaderBackButton";
+import { addBox } from "../indexeddb";
 
 export default function AddNewBox() {
   const [title, setTitle] = useState("");
@@ -13,10 +13,7 @@ export default function AddNewBox() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await postBoxById({
-      title: title,
-      item: item,
-    });
+    addBox(title, item);
     history.push("/box");
   };
 

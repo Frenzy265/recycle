@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components/macro";
 import PropTypes from "prop-types";
 import { BasicStyle } from "../globalstyle";
-import { deleteBoxByTitle } from "../api/boxes";
 import { useHistory } from "react-router-dom";
+import { deleteBoxByTitle } from "../indexeddb";
 
 const ModalContainer = styled.div`
   position: absolute;
