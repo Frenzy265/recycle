@@ -8,7 +8,6 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components/macro";
 import IconMinus from "../assets/icon-minus-action.svg";
-import { deleteItemByName } from "../api/boxes";
 import { HeaderBackButton } from "../components/HeaderBackButton";
 import { Modal } from "../components/Modal";
 import { getBoxByTitle, setItemByTitle } from "../indexeddb";
@@ -37,23 +36,22 @@ export default function BoxExist() {
     getBoxByTitle(title)
   );
 
-  const deleteMutation = useMutation(
-    (item) => deleteItemByName(box.title, item),
-    { onSuccess: () => queryClient.invalidateQueries("boxbytitle") }
-  );
+  const mutation = useMutation((allItems) => setItemByTitle(title, allItems), {
+    onSuccess: () => queryClient.invalidateQueries("boxbytitle"),
+  });
 
-  const addMutation = useMutation(
-    (allItems) => setItemByTitle(title, allItems),
-    {
-      onSuccess: () => queryClient.invalidateQueries("boxbytitle"),
-    }
-  );
+  const deleteItem = (item) => {
+    const itemToDelete = box.items.indexOf(item);
+    const allItems = box.items;
+    allItems.splice(itemToDelete, 1);
+    mutation.mutate(allItems);
+  };
 
   const createItem = (event) => {
     event.preventDefault();
     const allItems = box.items;
     allItems.push(newItem);
-    addMutation.mutate(allItems);
+    mutation.mutate(allItems);
     setNewItem("");
   };
 
@@ -76,7 +74,7 @@ export default function BoxExist() {
                 item={item}
                 icon={IconMinus}
                 alt={"Icon Delete"}
-                onClick={() => deleteMutation.mutate(item)}
+                onClick={() => deleteItem(item)}
               />
             ))}
           </ListContainer>
