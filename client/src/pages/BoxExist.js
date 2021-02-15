@@ -5,13 +5,14 @@ import { FormInput } from "../components/Form";
 import IconAdd from "../assets/icon-add-primary.svg";
 import Button from "../components/Button";
 import { useState } from "react";
-import { getBoxByTitle, addItemByTitle } from "../api/boxes";
+import { addItemByTitle } from "../api/boxes";
 import { useParams } from "react-router-dom";
 import styled from "styled-components/macro";
 import IconMinus from "../assets/icon-minus-action.svg";
 import { deleteItemByName } from "../api/boxes";
 import { HeaderBackButton } from "../components/HeaderBackButton";
 import { Modal } from "../components/Modal";
+import { getBoxByTitle } from "../indexeddb";
 
 const ListContainer = styled.ul`
   display: flex;
