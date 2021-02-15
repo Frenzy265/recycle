@@ -14,8 +14,6 @@ export default function SearchResult() {
     getResult(title)
   );
 
-  console.log(result);
-
   return (
     <>
       {status === "loading" && <div>Loading...</div>}
