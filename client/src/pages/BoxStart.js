@@ -5,7 +5,7 @@ import IconBoxNew from "../assets/icon-box-new-primary.svg";
 import styled from "styled-components/macro";
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
-import { EmptyBox } from "../components/EmptyBox";
+import { NoBoxes } from "../components/EmptyBox";
 import { getBoxes } from "../indexeddb";
 
 const Container = styled.div`
@@ -31,7 +31,7 @@ export default function BoxStart() {
 
         {status === "loading" && <div>Loading...</div>}
         {status === "error" && <div>Es ist ein Fehler aufgetreten</div>}
-        {status === "success" && boxes.length === 0 && <EmptyBox />}
+        {status === "success" && boxes.length === 0 && <NoBoxes />}
 
         {status === "success" &&
           boxes.map((box) => (
