@@ -8,13 +8,24 @@ const Box = styled.div`
   margin: 30px;
 `;
 
-export const EmptyBox = () => {
+export const NoBoxes = () => {
   return (
     <>
       <Box>
         Du hast noch keine Sammelbox erstellt. Benötigst du Inspiration? Sammle
         ungenutze Dinge für ebay, Wertstoffhof, Kleidercontainer, Flohmarkt oder
         um sie zu verschenken.
+      </Box>
+    </>
+  );
+};
+
+export const EmptyBox = () => {
+  return (
+    <>
+      <Box>
+        Deine Box ist leer. Füge einen neuen Gegenstand hinzu oder schließe die
+        Box.
       </Box>
     </>
   );
