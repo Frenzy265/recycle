@@ -11,6 +11,7 @@ import IconMinus from "../assets/icon-minus-action.svg";
 import { HeaderBackButton } from "../components/HeaderBackButton";
 import { Modal } from "../components/Modal";
 import { getBoxByTitle, setItemByTitle } from "../indexeddb";
+import { EmptyBox } from "../components/EmptyBox";
 
 const ListContainer = styled.ul`
   display: flex;
@@ -63,6 +64,7 @@ export default function BoxExist() {
     <>
       {status === "loading" && <div>Loading...</div>}
       {status === "error" && <div>Es ist ein Fehler aufgetreten</div>}
+
       {status === "success" && (
         <>
           <HeaderBackButton headline={box.title}></HeaderBackButton>
@@ -78,6 +80,7 @@ export default function BoxExist() {
               />
             ))}
           </ListContainer>
+          {status === "success" && box.items.length === 0 && <EmptyBox />}
           <ButtonContainer>
             <FormInput
               onSubmit={createItem}
